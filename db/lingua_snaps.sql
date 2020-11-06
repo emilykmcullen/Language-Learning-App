@@ -1,5 +1,5 @@
-DROP TABLE translations;
-DROP TABLE phrases;
+DROP TABLE translated_phrases;
+DROP TABLE first_language_phrases;
 
 CREATE TABLE first_language_phrases (
     id SERIAL PRIMARY KEY,

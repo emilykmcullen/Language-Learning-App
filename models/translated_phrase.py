@@ -4,7 +4,7 @@ class TranslatedPhrase:
         self.phrase = phrase
         self.language = language
         self.first_language_phrase = first_language_phrase
-         self.id = id
+        self.id = id
 
     
      
