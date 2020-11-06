@@ -17,7 +17,7 @@ def select_all():
 
     for row in results:
         first_language_phrase = first_language_phrase_repository.select(row[first_language_phrase_id])
-        translated_phrase = TranslatedPhrase(row['phrase'], row['language'], row['id'], first_language_phrase)
+        translated_phrase = TranslatedPhrase(row['phrase'], row['language'], first_language_phrase, row['id'])
         translated_phrases.append(translated_phrase)
     return translated_phrases
 
@@ -29,7 +29,7 @@ def select_id(id):
 
     if result is not None:
         first_language_phrase = first_language_phrase_repository.select(result[first_language_phrase_id])
-        translated_phrase = TranslatedPhrase(result['phrase'], result['language'], result['id'], first_language_phrase)
+        translated_phrase = TranslatedPhrase(result['phrase'], result['language'], first_language_phrase, result['id'])
     return translated_phrase
 
 def delete_all():
