@@ -1,10 +1,11 @@
 from db.run_sql import run_sql
 import repositories.first_language_phrase_repository as first_language_phrase_repository
+import repositories.language_repository as language_repository
 from models.translated_phrase import TranslatedPhrase
 
 def save(translated_phrase):
-    sql = "INSERT INTO translated_phrases(language, phrase, first_language_phrase_id) VALUES ( %s, %s, %s) RETURNING id"
-    values = [translated_phrase.language, translated_phrase.phrase, translated_phrase.first_language_phrase.id]
+    sql = "INSERT INTO translated_phrases(language_id, phrase, first_language_phrase_id) VALUES ( %s, %s, %s) RETURNING id"
+    values = [translated_phrase.language.id, translated_phrase.phrase, translated_phrase.first_language_phrase.id]
     results = run_sql(sql, values)
     translated_phrase = results[0]['id']
     return translated_phrase
@@ -17,7 +18,8 @@ def select_all():
 
     for row in results:
         first_language_phrase = first_language_phrase_repository.select(row[first_language_phrase_id])
-        translated_phrase = TranslatedPhrase(row['phrase'], row['language'], first_language_phrase, row['id'])
+        language = language_repository.select(row[language_id])
+        translated_phrase = TranslatedPhrase(row['phrase'], language, first_language_phrase, row['id'])
         translated_phrases.append(translated_phrase)
     return translated_phrases
 
@@ -29,7 +31,8 @@ def select_id(id):
 
     if result is not None:
         first_language_phrase = first_language_phrase_repository.select(result[first_language_phrase_id])
-        translated_phrase = TranslatedPhrase(result['phrase'], result['language'], first_language_phrase, result['id'])
+        language = language_repository.select(result[language_id])
+        translated_phrase = TranslatedPhrase(result['phrase'], language, first_language_phrase, result['id'])
     return translated_phrase
 
 def delete_all():
