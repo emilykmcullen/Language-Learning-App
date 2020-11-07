@@ -6,12 +6,29 @@
 
 <div>
     {% for first_language_phrase in first_language_phrases %}
-    <p><a href="/sentence_snaps/{{first_language_phrase.id}}"> {{first_language_phrase.phrase}}</a></p>
-    <p>Difficulty: {{first_language_phrase.difficulty}}</p>
+    <div class="first_language_phrase">
+        <div class="content">
+            {{first_language_phrase.phrase}}
+            <div class="difficulty">
+            <p>Difficulty: {{first_language_phrase.difficulty}}</p>
+            </div>
+            <div class="buttons">
+                <form class="delete" action="/sentence_snaps/{{first_language_phrase.id}}/delete" method="POST">
+                    <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
+                </form>
+                <p><a href="/sentence_snaps/{{first_language_phrase.id}}/play">Play</a></p>
+                <p><a href="/sentence_snaps/{{first_language_phrase.id}}/edit">Edit</a></p>
 
+            </div>
+        </div>
+    </div>
     {% endfor %}
 </div>
 
 
 
 {% endblock content %}
+
+
+
+<!-- <p><a href="/sentence_snaps/{{first_language_phrase.id}}"> {{first_language_phrase.phrase}}</a></p> -->
