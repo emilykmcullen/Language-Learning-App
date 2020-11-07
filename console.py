@@ -21,3 +21,4 @@ translated_phrase_2= TranslatedPhrase("Arrivederci", "italian", first_language_p
 translated_phrase_repository.save(translated_phrase_2)
 
 pdb.set_trace()
+

@@ -5,4 +5,7 @@ import repositories.first_language_phrase_repository as first_language_phrase_re
 
 first_language_phrases_blueprint = Blueprint("first_language_phrases", __name__)
 
-# @first_language_phrases_blueprint()
+@first_language_phrases_blueprint.route("/sentence_snaps")
+def sentence_snaps():
+    first_language_phrases = first_language_phrase_repository.select_all()
+    return render_template("sentence_snaps/index.html", first_language_phrases = first_language_phrases)
