@@ -24,3 +24,7 @@ def play_phrase(id):
 def edit_phrase(id):
     first_language_phrase = first_language_phrase_repository.select(id)
     return render_template("sentence_snaps/edit.html", first_language_phrase=first_language_phrase)
+
+@first_language_phrases_blueprint.route("/sentence_snaps/new")
+def new_phrase():
+    return render_template("sentence_snaps/new.html")

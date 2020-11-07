@@ -9,7 +9,12 @@ CREATE TABLE first_language_phrases (
 
 CREATE TABLE translated_phrases (
     id SERIAL PRIMARY KEY,
-    language VARCHAR(255),
+    language_id INT REFERENCES languages(id) ON DELETE CASCADE,
     phrase TEXT,
     first_language_phrase_id INT REFERENCES first_language_phrases(id) ON DELETE CASCADE
+);
+
+CREATE TABLE languages (
+    id SERIAL PRIMARY KEY,
+    language VARCHAR(255)
 );
