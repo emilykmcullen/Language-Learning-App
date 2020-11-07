@@ -4,6 +4,14 @@
 
 <h1>Your sentence sets</h1>
 
+<div>
+    {% for first_language_phrase in first_language_phrases %}
+    <p><a href="/sentence_snaps/{{first_language_phrase.id}}"> {{first_language_phrase.phrase}}</a></p>
+    <p>Difficulty: {{first_language_phrase.difficulty}}</p>
+
+    {% endfor %}
+</div>
+
 
 
 {% endblock content %}
