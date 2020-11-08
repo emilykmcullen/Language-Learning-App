@@ -17,6 +17,7 @@ CREATE TABLE translated_phrases (
     id SERIAL PRIMARY KEY,
     language_id INT REFERENCES languages(id) ON DELETE CASCADE,
     phrase TEXT,
+    mastered BOOLEAN,
     first_language_phrase_id INT REFERENCES first_language_phrases(id) ON DELETE CASCADE
 );
 

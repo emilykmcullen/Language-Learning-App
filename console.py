@@ -24,10 +24,10 @@ first_language_phrase_repository.save(first_language_phrase_1)
 first_language_phrase_2 = FirstLanguagePhrase("Goodbye", "easy")
 first_language_phrase_repository.save(first_language_phrase_2)
 
-translated_phrase_1= TranslatedPhrase("Ciao", language_1, first_language_phrase_1)
+translated_phrase_1= TranslatedPhrase("Ciao", language_1, first_language_phrase_1, mastered=False)
 translated_phrase_repository.save(translated_phrase_1)
 
-translated_phrase_2= TranslatedPhrase("Adios", language_2, first_language_phrase_2)
+translated_phrase_2= TranslatedPhrase("Adios", language_2, first_language_phrase_2, mastered=False)
 translated_phrase_repository.save(translated_phrase_2)
 
 
