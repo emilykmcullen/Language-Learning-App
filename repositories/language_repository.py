@@ -28,6 +28,16 @@ def select(id):
         language = Language(result['title'], result['id'])
     return language
 
+def select_title(title):
+    language = None
+    sql = "SELECT * FROM languages WHERE title = %s"
+    values = [title]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        language = Language(result['title'], result['id'])
+    return language
+
 def delete_all():
     sql = "DELETE FROM languages"
     run_sql(sql)

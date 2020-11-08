@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.first_language_phrase import FirstLanguagePhrase
+from models.translated_phrase import TranslatedPhrase
+from models.language import Language
 import repositories.first_language_phrase_repository as first_language_phrase_repository
+import repositories.translated_phrase_repository as translated_phrase_repository
 import repositories.language_repository as language_repository
 
 first_language_phrases_blueprint = Blueprint("first_language_phrases", __name__)
@@ -30,3 +33,17 @@ def edit_phrase(id):
 def new_phrase():
     languages = language_repository.select_all()
     return render_template("sentence_snaps/new.html", languages=languages)
+
+@first_language_phrases_blueprint.route("/sentence_snaps", methods=["POST"])
+def create_phrase():
+    language_input = request.form['language_choice']
+    first_language_input = request.form['first_language_input']
+    difficulty = request.form['difficulty_choice']
+    translated_input = request.form['translated_input']
+    language = language_repository.select_title(language_input)
+    first_language_phrase = FirstLanguagePhrase(first_language_input, difficulty)
+    first_language_phrase_repository.save(first_language_phrase)
+    translated_phrase = TranslatedPhrase(translated_input, language, first_language_phrase)
+    translated_phrase_repository.save(translated_phrase)
+    return redirect('/sentence_snaps')
+
