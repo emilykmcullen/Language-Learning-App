@@ -37,3 +37,8 @@ def delete(id):
     sql = "DELETE FROM first_language_phrases WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def update(first_language_phrase):
+    sql = "UPDATE first_language_phrases SET (phrase, difficulty) = (%s, %s) WHERE id = %s"
+    values = [first_language_phrase.phrase, first_language_phrase.difficulty, first_language_phrase.id]
+    run_sql(sql,values)
