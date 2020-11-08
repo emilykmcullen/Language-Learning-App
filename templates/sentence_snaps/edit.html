@@ -3,5 +3,35 @@
 {% block content %}
 
 <h1>Edit!</h1>
+<form action="/sentence_snaps/{{translated_phrase.id}}" method="POST">
+    <div>
+        <p>
+            <label for="first_language_input">Sentence/phrase:</label>
+            <input type="text" name="first_language_input" id="first_language_input" value="{{first_language_phrase.phrase}}">
+        </p>
+        <p> 
+            <label for="language_choice">I want to practise this phrase in:</label>
+                <select name="language_choice" id="language_choice">
+            {% for language in languages %}
+                    <option value={{language.title}}>{{language.title.capitalize()}}</option>   
+            {% endfor %}
+                </select>
+        </p>
+            <label for="translated_input">Translated sentence/phrase:</label>
+            <input type="text" name="translated_input" id="translated_input" value="{{translated_phrase.phrase}}">
+        <p>
+            <label for="difficulty_choice">Difficulty:</label>
+                <select name="difficulty_choice" id="difficulty_choice">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+        </p>
+        <p class="submitbutton">
+            <input type="submit" value="Submit">
+        </p>
 
+    </div>
+
+</form>
 {% endblock content %}
