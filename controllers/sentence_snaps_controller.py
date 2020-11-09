@@ -6,6 +6,7 @@ from models.language import Language
 import repositories.first_language_phrase_repository as first_language_phrase_repository
 import repositories.translated_phrase_repository as translated_phrase_repository
 import repositories.language_repository as language_repository
+import string
 
 sentence_snaps_blueprint = Blueprint("sentence_snaps_blueprint", __name__ )
 
@@ -21,8 +22,9 @@ def delete_phrase(id):
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/play")
 def play_phrase(id):
-    first_language_phrase = first_language_phrase_repository.select(id)
-    return render_template("sentence_snaps/play.html", first_language_phrase=first_language_phrase)
+    # first_language_phrase = first_language_phrase_repository.select(id)
+    translated_phrase = translated_phrase_repository.select(id)
+    return render_template("sentence_snaps/play.html", translated_phrase=translated_phrase)
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/edit")
 def edit_phrase(id):
@@ -66,4 +68,19 @@ def create_phrase():
     translated_phrase = TranslatedPhrase(translated_input, language, first_language_phrase, mastered)
     translated_phrase_repository.save(translated_phrase)
     return redirect('/sentence_snaps')
+
+@sentence_snaps_blueprint.route("/sentence_snaps/<id>/results", methods=["POST"])
+def results(id):
+    translated_phrase = translated_phrase_repository.select(id)
+    answer = request.form['answer']
+    remove_punctuation_answer = answer.translate(str.maketrans('','', string.punctuation))
+    clean_answer = remove_punctuation_answer.lower()
+    remove_punctuation_translated_phrase = translated_phrase.phrase.translate(str.maketrans('','',string.punctuation))
+    clean_translated_phrase = remove_punctuation_translated_phrase.lower()
+    if clean_answer == clean_translated_phrase:
+        result = True
+    else:
+        result = False
+    return render_template("sentence_snaps/results.html", result=result, translated_phrase=translated_phrase)
+
 

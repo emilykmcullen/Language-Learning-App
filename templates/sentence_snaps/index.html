@@ -10,8 +10,8 @@
 
 <div>
     {% for unmastered_translated_phrase in unmastered_translated_phrases %}
-    <div class="first_language_phrase">
-        <div class="content">
+    <div class="entries">
+        <div class="single-entry">
             {{unmastered_translated_phrase.first_language_phrase.phrase}}
             <div class="language">
             <p> Practise in: {{unmastered_translated_phrase.language.title}}</p>
