@@ -11,8 +11,8 @@ sentence_snaps_blueprint = Blueprint("sentence_snaps_blueprint", __name__ )
 
 @sentence_snaps_blueprint.route("/sentence_snaps")
 def sentence_snaps():
-    first_language_phrases = first_language_phrase_repository.select_all()
-    return render_template("sentence_snaps/index.html", first_language_phrases = first_language_phrases)
+    unmastered_translated_phrases = translated_phrase_repository.select_all_unmastered()
+    return render_template("sentence_snaps/index.html", unmastered_translated_phrases=unmastered_translated_phrases)
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/delete", methods=["POST"])
 def delete_phrase(id):

@@ -9,19 +9,22 @@
 </h2>
 
 <div>
-    {% for first_language_phrase in first_language_phrases %}
+    {% for unmastered_translated_phrase in unmastered_translated_phrases %}
     <div class="first_language_phrase">
         <div class="content">
-            {{first_language_phrase.phrase}}
+            {{unmastered_translated_phrase.first_language_phrase.phrase}}
+            <div class="language">
+            <p> Practise in: {{unmastered_translated_phrase.language.title}}</p>
+            </div>
             <div class="difficulty">
-            <p>Difficulty: {{first_language_phrase.difficulty}}</p>
+            <p>Difficulty: {{unmastered_translated_phrase.first_language_phrase.difficulty}}</p>
             </div>
             <div class="buttons">
-                <form class="delete" action="/sentence_snaps/{{first_language_phrase.id}}/delete" method="POST">
+                <form class="delete" action="/sentence_snaps/{{unmastered_translated_phrase.id}}/delete" method="POST">
                     <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
                 </form>
-                <p><a href="/sentence_snaps/{{first_language_phrase.id}}/play">Play</a></p>
-                <p><a href="/sentence_snaps/{{first_language_phrase.id}}/edit">Edit</a></p>
+                <p><a href="/sentence_snaps/{{unmastered_translated_phrase.id}}/play">Play</a></p>
+                <p><a href="/sentence_snaps/{{unmastered_translated_phrase.id}}/edit">Edit</a></p>
             </div>
         </div>
     </div>
