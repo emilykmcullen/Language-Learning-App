@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.tag import Tag
+from models.translated_phrase import TranslatedPhrase
 
 def save(tag):
     sql = "INSERT INTO tags(title) VALUES (%s) RETURNING id"
@@ -36,3 +37,15 @@ def delete(id):
     sql = "DELETE FROM tags WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+# this will find and return all the translated phrases that are joined to a particular tag
+def translated_phrases(tag):
+    translated_phrases = []
+    sql = "SELECT translated_phrases.* FROM translated_phrases INNER JOIN tags_translated_phrases ON tags_translated_phrases.translated_phrase_id = translated_phrases.id WHERE tags_translated_phrases.tag_id = %s"
+    values = [tag.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        translated_phrase = TranslatedPhrase(row['phrase'], row['language'], row['first_language_phrase'], row['mastered'], row['id'])
+        translated_phrases.append(translated_phrase)
+    return translated_phrases

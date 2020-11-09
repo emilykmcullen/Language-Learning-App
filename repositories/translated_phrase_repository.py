@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 import repositories.first_language_phrase_repository as first_language_phrase_repository
 import repositories.language_repository as language_repository
 from models.translated_phrase import TranslatedPhrase
+from models.tag import Tag
 
 def save(translated_phrase):
     sql = "INSERT INTO translated_phrases(language_id, phrase, first_language_phrase_id, mastered) VALUES ( %s, %s, %s, %s) RETURNING id"
@@ -73,3 +74,16 @@ def update(translated_phrase):
     sql = "UPDATE translated_phrases SET (language_id, phrase, first_language_phrase_id, mastered) = (%s, %s, %s, %s) WHERE id = %s"
     values = [translated_phrase.language.id, translated_phrase.phrase, translated_phrase.first_language_phrase.id, translated_phrase.mastered, translated_phrase.id]
     run_sql(sql,values)
+
+# this will return all the tags that are joined to a specific phrase
+def tags(translated_phrase):
+    tags = []
+    sql = "SELECT tags.* FROM tags INNER JOIN tags_translated_phrases ON tags_translated_phrase.tag_id = tag.id WHERE tags_translated_phrases.translated_phrase_id = %s"
+    values = [translated_phrase.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        tag = Tag(row['title'], row['id'])
+        tags.append(tag)
+    return tags
+
