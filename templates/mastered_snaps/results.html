@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if result == True %}
+<div>
+    <p>{{answer}} <i class="fa fa-check fa-2x" style="color:green" aria-hidden="true"></i> </p>
+    <p> Well done!</p>
+    <p>
+        <a href="{{ url_for('mastered_snaps_blueprint.mastered_snaps') }}">Back to Mastered Snaps</a>
+    </p>
+</div>
+{% else %}
+<div>
+    <p>{{answer}} <i class="fa fa-times fa-2x" aria-hidden="true"></i></p>
+    <p> Whoops!</p>
+    <form action="/mastered_snaps/{{translated_phrase.id}}/show_answer" method="GET">
+        <p class="submitbutton">
+            <input type="submit" value="Show answer">
+        </p>
+    </form>
+    <form action="/mastered_snaps/{{translated_phrase.id}}/update_mastered" method="POST">
+        <p class="submitbutton">
+            <input type="submit" value="Move this phrase back to my Sentence Snaps">
+        </p>
+    </form>
+    <p>
+        <a href="/mastered_snaps/{{translated_phrase.id}}/play">Try Again</a>
+    </p>
+    <p>
+        <a href="{{ url_for('mastered_snaps_blueprint.mastered_snaps') }}">Back to Mastered Snaps</a>
+    </p>
+</div>
+{% endif %}
+
+
+
+    
+{% endblock content %}
+
+

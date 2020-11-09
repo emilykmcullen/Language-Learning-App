@@ -17,12 +17,11 @@ def sentence_snaps():
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/delete", methods=["POST"])
 def delete_phrase(id):
-    first_language_phrase_repository.delete(id)
+    translated_phrase_repository.delete(id)
     return redirect("/sentence_snaps")
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/play")
 def play_phrase(id):
-    # first_language_phrase = first_language_phrase_repository.select(id)
     translated_phrase = translated_phrase_repository.select(id)
     return render_template("sentence_snaps/play.html", translated_phrase=translated_phrase)
 

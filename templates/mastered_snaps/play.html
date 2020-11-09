@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Play your sentence!</h1>
+
+<form action="/mastered_snaps/{{translated_phrase.id}}/results" method="POST">
+<div>
+    <p>
+        "{{translated_phrase.first_language_phrase.phrase}}"
+    </p>
+    <p>
+        <label for="answer">In {{translated_phrase.language.title}}:</label>
+        <input type="text" name="answer" id="answer" placeholder="Enter your answer">
+    </p>
+    <p class="submitbutton">
+        <input type="submit" value="Submit">
+    </p>
+</div>
+</form>
+
+
+{% endblock content %}
