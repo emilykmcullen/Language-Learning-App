@@ -18,17 +18,26 @@ language_repository.save(language_1)
 language_2 = Language("spanish")
 language_repository.save(language_2)
 
-first_language_phrase_1 = FirstLanguagePhrase("Hello", "easy")
+first_language_phrase_1 = FirstLanguagePhrase("dreamy sigh", "medium")
 first_language_phrase_repository.save(first_language_phrase_1)
 
-first_language_phrase_2 = FirstLanguagePhrase("Goodbye", "easy")
+first_language_phrase_2 = FirstLanguagePhrase("a thimbleful", "medium")
 first_language_phrase_repository.save(first_language_phrase_2)
 
-translated_phrase_1= TranslatedPhrase("Ciao", language_1, first_language_phrase_1, mastered=False)
+first_language_phrase_3 = FirstLanguagePhrase("hello", "easy")
+first_language_phrase_repository.save(first_language_phrase_3)
+
+translated_phrase_1= TranslatedPhrase("sospiro trasognante", language_1, first_language_phrase_1, mastered=False)
 translated_phrase_repository.save(translated_phrase_1)
 
-translated_phrase_2= TranslatedPhrase("Adios", language_2, first_language_phrase_2, mastered=False)
+translated_phrase_2= TranslatedPhrase("un goccino", language_1, first_language_phrase_2, mastered=False)
 translated_phrase_repository.save(translated_phrase_2)
+
+translated_phrase_3= TranslatedPhrase("ciao", language_1, first_language_phrase_3, mastered=False)
+translated_phrase_repository.save(translated_phrase_3)
+
+translated_phrase_4= TranslatedPhrase("hola", language_2, first_language_phrase_3, mastered=False)
+translated_phrase_repository.save(translated_phrase_4)
 
 
 

@@ -23,6 +23,31 @@ def select_all():
         translated_phrases.append(translated_phrase)
     return translated_phrases
 
+
+def select_all_mastered():
+    mastered_phrases = []
+    sql = "SELECT * FROM translated_phrases WHERE mastered = true"
+    results = run_sql(sql)
+
+    for row in results:
+        first_language_phrase = first_language_phrase_repository.select(row['first_language_phrase_id'])
+        language = language_repository.select(row['language_id'])
+        mastered_phrase = TranslatedPhrase(row['phrase'], language, first_language_phrase, row['mastered'], row['id'])
+        mastered_phrases.append(mastered_phrase)
+    return mastered_phrases
+
+def select_all_unmastered():
+    unmastered_phrases = []
+    sql = "SELECT * FROM translated_phrases WHERE mastered = false"
+    results = run_sql(sql)
+
+    for row in results:
+        first_language_phrase = first_language_phrase_repository.select(row['first_language_phrase_id'])
+        language = language_repository.select(row['language_id'])
+        unmastered_phrase = TranslatedPhrase(row['phrase'], language, first_language_phrase, row['mastered'], row['id'])
+        unmastered_phrases.append(unmastered_phrase)
+    return unmastered_phrases
+
 def select(id): 
     translated_phrase = None 
     sql = "SELECT * FROM translated_phrases WHERE id = %s"

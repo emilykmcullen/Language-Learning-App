@@ -7,31 +7,31 @@ import repositories.first_language_phrase_repository as first_language_phrase_re
 import repositories.translated_phrase_repository as translated_phrase_repository
 import repositories.language_repository as language_repository
 
-first_language_phrases_blueprint = Blueprint("first_language_phrases", __name__)
+sentence_snaps_blueprint = Blueprint("sentence_snaps_blueprint", __name__ )
 
-@first_language_phrases_blueprint.route("/sentence_snaps")
+@sentence_snaps_blueprint.route("/sentence_snaps")
 def sentence_snaps():
     first_language_phrases = first_language_phrase_repository.select_all()
     return render_template("sentence_snaps/index.html", first_language_phrases = first_language_phrases)
 
-@first_language_phrases_blueprint.route("/sentence_snaps/<id>/delete", methods=["POST"])
+@sentence_snaps_blueprint.route("/sentence_snaps/<id>/delete", methods=["POST"])
 def delete_phrase(id):
     first_language_phrase_repository.delete(id)
     return redirect("/sentence_snaps")
 
-@first_language_phrases_blueprint.route("/sentence_snaps/<id>/play")
+@sentence_snaps_blueprint.route("/sentence_snaps/<id>/play")
 def play_phrase(id):
     first_language_phrase = first_language_phrase_repository.select(id)
     return render_template("sentence_snaps/play.html", first_language_phrase=first_language_phrase)
 
-@first_language_phrases_blueprint.route("/sentence_snaps/<id>/edit")
+@sentence_snaps_blueprint.route("/sentence_snaps/<id>/edit")
 def edit_phrase(id):
     languages = language_repository.select_all()
     translated_phrase = translated_phrase_repository.select(id)
     first_language_phrase = first_language_phrase_repository.select(translated_phrase.first_language_phrase.id)
     return render_template("sentence_snaps/edit.html", first_language_phrase=first_language_phrase, translated_phrase=translated_phrase, languages=languages)
 
-@first_language_phrases_blueprint.route("/sentence_snaps/<id>", methods=['POST'])
+@sentence_snaps_blueprint.route("/sentence_snaps/<id>", methods=['POST'])
 def update_phrase(id):
     translated_phrase = translated_phrase_repository.select(id)
     original_first_language_phrase_id = translated_phrase.first_language_phrase.id
@@ -40,20 +40,22 @@ def update_phrase(id):
     difficulty = request.form['difficulty_choice']
     translated_input = request.form['translated_input']
     language = language_repository.select_title(language_input)
+    mastered = True if "mastered" in request.form else False
     new_first_language_phrase = FirstLanguagePhrase(first_language_input, difficulty, original_first_language_phrase_id)
     first_language_phrase_repository.update(new_first_language_phrase)
-    new_translated_phrase = TranslatedPhrase(translated_input, language, new_first_language_phrase, id)
+    new_translated_phrase = TranslatedPhrase(translated_input, language, new_first_language_phrase, mastered, id)
     translated_phrase_repository.update(new_translated_phrase)
     return redirect('/sentence_snaps')
     
 
-@first_language_phrases_blueprint.route("/sentence_snaps/new")
+@sentence_snaps_blueprint.route("/sentence_snaps/new")
 def new_phrase():
     languages = language_repository.select_all()
     return render_template("sentence_snaps/new.html", languages=languages)
 
-@first_language_phrases_blueprint.route("/sentence_snaps", methods=["POST"])
+@sentence_snaps_blueprint.route("/sentence_snaps", methods=["POST"])
 def create_phrase():
+    mastered = False
     language_input = request.form['language_choice']
     first_language_input = request.form['first_language_input']
     difficulty = request.form['difficulty_choice']
@@ -61,7 +63,7 @@ def create_phrase():
     language = language_repository.select_title(language_input)
     first_language_phrase = FirstLanguagePhrase(first_language_input, difficulty)
     first_language_phrase_repository.save(first_language_phrase)
-    translated_phrase = TranslatedPhrase(translated_input, language, first_language_phrase)
+    translated_phrase = TranslatedPhrase(translated_input, language, first_language_phrase, mastered)
     translated_phrase_repository.save(translated_phrase)
     return redirect('/sentence_snaps')
 
