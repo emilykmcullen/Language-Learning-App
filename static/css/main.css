@@ -1,0 +1,132 @@
+body {
+    background-color: #7b59e4;
+    font-family: 'Nunito', sans-serif;
+    height: 100%;
+  }
+  
+.navlink {
+    max-width: 30em;
+    margin: 0 auto;
+}
+.navitem{
+    display: inline;
+    padding-right: 10px;
+}
+
+body > ul> li> a {
+    color: black;
+  }
+
+.navlist{
+    padding-left: 0;
+}
+
+h1 {
+    font-size: 3em;
+    color: #a1cff5;
+    margin-bottom: 20px;
+}
+
+
+
+.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30em;
+    margin-top: 70px;
+}
+
+.blocktext_submit_image {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30em;
+}
+
+hr {
+    border: 3px solid black
+}
+
+input[type="text"] {
+    background-color: #7b59e4;
+    color: black;
+    border:none;
+    border-bottom: solid 2px black;
+    outline: none;
+}
+
+input[type="text"]:active {
+    background-color: #7b59e4;
+    color: black;
+    border:none;
+    border-bottom: solid 2px black;
+    outline: none;
+    color: #7b59e4;
+}
+
+select {
+    background-color: #7b59e4;
+    color: black;
+    border:none;
+    border-bottom: solid 2px black;
+    outline: none;
+}
+
+input[type=submit] {
+    background-color:#4d3a91;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    text-decoration: none;
+    cursor: pointer;
+    width: 75%;
+    font-size: 16px;
+  }
+
+.submitbutton {
+    width: 50%;
+    margin: 0 auto;
+}
+
+p {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+a:link, a:visited {
+    background-color:#4d3a91;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  img {
+    display: inline-block;
+    max-width: 30%;
+    border: solid 4px black;
+  }
+
+  #gallery {  
+    text-align: center; 
+    display: flex;
+    flex-flow: row;
+    margin-top: 40px;
+  }
+
+  .entries {
+    display: flex;
+    flex-flow: row wrap;
+    padding:5px 
+  }
+  
+
+  .single-entry {
+    background-color: #9190e9 ;
+    width: 250px;
+    height: 250px;
+    flex: 25%;
+    justify-content: space-between;
+    margin:5px
+  }
+
