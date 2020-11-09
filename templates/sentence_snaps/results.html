@@ -19,7 +19,7 @@
 <div>
     <p>{{answer}} <i class="fa fa-times fa-2x" aria-hidden="true"></i></p>
     <p> Whoops!</p>
-    <form action="/sentence_snaps/{{translated_phrase.id}}/show_answer" method="POST">
+    <form action="/sentence_snaps/{{translated_phrase.id}}/show_answer" method="GET">
         <p class="submitbutton">
             <input type="submit" value="Show answer">
         </p>
@@ -27,7 +27,9 @@
     <p>
         <a href="/sentence_snaps/{{translated_phrase.id}}/play">Try Again</a>
     </p>
-
+    <p>
+        <a href="{{ url_for('sentence_snaps_blueprint.sentence_snaps') }}">Back to Sentence Snaps</a>
+    </p>
 </div>
 {% endif %}
 

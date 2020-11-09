@@ -95,5 +95,9 @@ def update_mastered(id):
     translated_phrase_repository.update(new_translated_phrase)
     return redirect('/sentence_snaps')
 
+@sentence_snaps_blueprint.route("/sentence_snaps/<id>/show_answer")
+def show_answer(id):
+    translated_phrase = translated_phrase_repository.select(id)
+    return render_template("sentence_snaps/show_answer.html", translated_phrase=translated_phrase)
 
 
