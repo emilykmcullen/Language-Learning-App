@@ -77,10 +77,23 @@ def results(id):
     clean_answer = remove_punctuation_answer.lower()
     remove_punctuation_translated_phrase = translated_phrase.phrase.translate(str.maketrans('','',string.punctuation))
     clean_translated_phrase = remove_punctuation_translated_phrase.lower()
+    id = id
     if clean_answer == clean_translated_phrase:
         result = True
     else:
         result = False
-    return render_template("sentence_snaps/results.html", result=result, translated_phrase=translated_phrase)
+    return render_template("sentence_snaps/results.html", result=result, translated_phrase=translated_phrase, answer=answer, id=id)
+
+@sentence_snaps_blueprint.route("/sentence_snaps/<id>/update_mastered", methods=["POST"])
+def update_mastered(id):
+    translated_phrase = translated_phrase_repository.select(id)
+    phrase = translated_phrase.phrase
+    language = translated_phrase.language
+    first_language_phrase = translated_phrase.first_language_phrase
+    mastered = True
+    new_translated_phrase = TranslatedPhrase(phrase, language, first_language_phrase, mastered, id)
+    translated_phrase_repository.update(new_translated_phrase)
+    return redirect('/sentence_snaps')
+
 
 
