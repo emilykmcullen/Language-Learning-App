@@ -30,10 +30,11 @@ h1 {
 
 
 .blocktext {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 30em;
-    margin-top: 70px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    max-width: 1200px;
+    margin: 0 auto;
+    /* margin-top: 100px; */
 }
 
 .blocktext_submit_image {
@@ -43,7 +44,7 @@ h1 {
 }
 
 hr {
-    border: 3px solid black
+    border: 2px solid black
 }
 
 input[type="text"] {
@@ -129,4 +130,8 @@ a:link, a:visited {
     justify-content: space-between;
     margin:5px
   }
+
+.delete {
+    display: inline-block;
+}
 

@@ -38,6 +38,11 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+def update(tag):
+    sql = "UPDATE tags SET (title) = (%s) WHERE id = %s"
+    values = [tag.title, tag.id]
+    run_sql(sql,values)
+
 # this will find and return all the translated phrases that are joined to a particular tag
 def translated_phrases(tag):
     translated_phrases = []

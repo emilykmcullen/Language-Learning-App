@@ -35,4 +35,3 @@ CREATE TABLE tags_translated_phrases (
 );
 
 
--- make a Language class, repository, controller, make any necessary changes to translated phrase objects elsewhere

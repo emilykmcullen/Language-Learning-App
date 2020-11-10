@@ -6,6 +6,7 @@ from models.language import Language
 import repositories.first_language_phrase_repository as first_language_phrase_repository
 import repositories.translated_phrase_repository as translated_phrase_repository
 import repositories.language_repository as language_repository
+import repositories.tag_repository as tag_repository
 import string
 
 sentence_snaps_blueprint = Blueprint("sentence_snaps_blueprint", __name__ )
@@ -27,10 +28,11 @@ def play_phrase(id):
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/edit")
 def edit_phrase(id):
+    tags = tag_repository.select_all()
     languages = language_repository.select_all()
     translated_phrase = translated_phrase_repository.select(id)
     first_language_phrase = first_language_phrase_repository.select(translated_phrase.first_language_phrase.id)
-    return render_template("sentence_snaps/edit.html", first_language_phrase=first_language_phrase, translated_phrase=translated_phrase, languages=languages)
+    return render_template("sentence_snaps/edit.html", first_language_phrase=first_language_phrase, translated_phrase=translated_phrase, languages=languages, tags=tags)
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>", methods=['POST'])
 def update_phrase(id):
@@ -98,5 +100,7 @@ def update_mastered(id):
 def show_answer(id):
     translated_phrase = translated_phrase_repository.select(id)
     return render_template("sentence_snaps/show_answer.html", translated_phrase=translated_phrase)
+
+
 
 
