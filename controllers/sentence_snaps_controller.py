@@ -41,10 +41,6 @@ def edit_phrase(id):
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>", methods=['POST'])
 def update_phrase(id):
-    if request.form['tags'] == 'none':
-        new_tag = None
-    else:
-        new_tag = tag_repository.select_title(request.form['tags'])
     translated_phrase = translated_phrase_repository.select(id)
     original_first_language_phrase_id = translated_phrase.first_language_phrase.id
     language = language_repository.select_title(request.form['language_choice'])
@@ -54,10 +50,20 @@ def update_phrase(id):
     mastered = True if "mastered" in request.form else False
     new_first_language_phrase = FirstLanguagePhrase(first_language_input, difficulty, original_first_language_phrase_id)
     first_language_phrase_repository.update(new_first_language_phrase)
+    # first language phrase is updated now
     new_translated_phrase = TranslatedPhrase(translated_input, language, new_first_language_phrase, mastered, id)
     translated_phrase_repository.update(new_translated_phrase)
-    tag_translated_phrase = tagTranslatedPhrase(new_translated_phrase, new_tag)
-    tag_translated_phrase_repository.save(tag_translated_phrase)
+    # translated phrase is updated
+    #REMOVE TAGS
+    if request.form['remove_tags'] != 'none':
+        tag_to_remove = tag_repository.select_title(request.form['remove_tags'])
+        tag_translated_phrase_repository.delete_row(new_translated_phrase, tag_to_remove)
+        print("Hello blablabal")
+    #ADD TAGS
+    if request.form['tags'] != 'none':
+        new_tag = tag_repository.select_title(request.form['tags'])
+        tag_translated_phrase = tagTranslatedPhrase(new_translated_phrase, new_tag)
+        tag_translated_phrase_repository.save(tag_translated_phrase)
     return redirect('/sentence_snaps')
     
 
