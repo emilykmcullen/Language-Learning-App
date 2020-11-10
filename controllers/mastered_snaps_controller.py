@@ -32,32 +32,38 @@ def play_phrase(id):
 
 @mastered_snaps_blueprint.route("/mastered_snaps/<id>/edit")
 def edit_phrase(id):
-    tags = tag_repository.select_all()
+    tag_translated_phrases = tag_translated_phrase_repository.select_all()
+    all_tags = tag_repository.select_all()
     languages = language_repository.select_all()
     translated_phrase = translated_phrase_repository.select(id)
+    tag_titles= translated_phrase_repository.tag_titles(translated_phrase)
     first_language_phrase = first_language_phrase_repository.select(translated_phrase.first_language_phrase.id)
-    return render_template("mastered_snaps/edit.html", languages=languages, translated_phrase=translated_phrase, first_language_phrase=first_language_phrase, tags=tags)
+    return render_template("mastered_snaps/edit.html", languages=languages, translated_phrase=translated_phrase, first_language_phrase=first_language_phrase, all_tags=all_tags, tag_translated_phrases=tag_translated_phrases, tag_titles=tag_titles)
 
 @mastered_snaps_blueprint.route("/mastered_snaps/<id>", methods=['POST'])
 def update_phrase(id):
-    if request.form['tags'] == 'none':
-        new_tag = None
-    else:
-        new_tag = tag_repository.select_title(request.form['tags'])
     translated_phrase = translated_phrase_repository.select(id)
     original_first_language_phrase_id = translated_phrase.first_language_phrase.id
-    language_input = request.form['language_choice']
+    language = language_repository.select_title(request.form['language_choice'])
     first_language_input = request.form['first_language_input']
     difficulty = request.form['difficulty_choice']
     translated_input = request.form['translated_input']
-    language = language_repository.select_title(language_input)
     mastered = False if "mastered" in request.form else True
     new_first_language_phrase = FirstLanguagePhrase(first_language_input, difficulty, original_first_language_phrase_id)
     first_language_phrase_repository.update(new_first_language_phrase)
+    #first language phrase updated
     new_translated_phrase = TranslatedPhrase(translated_input, language, new_first_language_phrase, mastered, id)
     translated_phrase_repository.update(new_translated_phrase)
-    tag_translated_phrase = tagTranslatedPhrase(new_translated_phrase, new_tag)
-    tag_translated_phrase_repository.save(tag_translated_phrase)
+    #translated phrase updated
+    #REMOVE TAGS
+    if request.form['remove_tags'] != 'none':
+        tag_to_remove = tag_repository.select_title(request.form['remove_tags'])
+        tag_translated_phrase_repository.delete_row(new_translated_phrase, tag_to_remove)
+    #ADD TAGS
+    if request.form['tags'] != 'none':
+        new_tag = tag_repository.select_title(request.form['tags'])
+        tag_translated_phrase = tagTranslatedPhrase(new_translated_phrase, new_tag)
+        tag_translated_phrase_repository.save(tag_translated_phrase)
     return redirect('/mastered_snaps')
 
 @mastered_snaps_blueprint.route("/mastered_snaps/<id>/results", methods=["POST"])
