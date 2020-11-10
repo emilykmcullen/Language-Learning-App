@@ -1,8 +1,10 @@
 from flask import render_template, request, redirect
 from flask import Blueprint
+import repositories.translated_phrase_repository as translated_phrase_repository
 import repositories.tag_repository as tag_repository
 import repositories.tag_translated_phrase_repository as tag_translated_phrase_repository
 from models.tag import Tag
+import random
 
 base_blueprint = Blueprint("base", __name__)
 
@@ -29,5 +31,11 @@ def delete_tag(id):
     tag_repository.delete(id)
     return redirect('/create_new_tag')
     
+@base_blueprint.route('/random')
+def play_random():
+    all_translated_phrases = translated_phrase_repository.select_all()
+    number = len(all_translated_phrases)
+    random_number = random.randint(1, number)
+    return redirect(f"/sentence_snaps/{random_number}/play")
 
-    
+

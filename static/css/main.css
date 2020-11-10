@@ -30,17 +30,37 @@ h1 {
 
 
 .blocktext {
-    /* margin-left: auto;
-    margin-right: auto; */
+    margin-left: auto;
+    margin-right: auto;
     max-width: 1200px;
     margin: 0 auto;
     /* margin-top: 100px; */
 }
 
-.blocktext_submit_image {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 30em;
+.entries {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.single-entry {
+  opacity: 0.7;
+  background-color: #9190e9 ;
+  width: 250px;
+  /* height: 250px; */
+  margin:5px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.single-entry:hover {
+  opacity: 1;
+}
+
+.phrase {
+  font-weight: 700;
 }
 
 hr {
@@ -79,8 +99,8 @@ input[type=submit] {
     padding: 16px 32px;
     text-decoration: none;
     cursor: pointer;
-    /* width: 75%; */
     font-size: 16px;
+    border-radius: 20px;
   }
 
 .submitbutton {
@@ -100,36 +120,9 @@ a:link, a:visited {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    border-radius: 20px;
   }
 
-  img {
-    display: inline-block;
-    max-width: 30%;
-    border: solid 4px black;
-  }
-
-  #gallery {  
-    text-align: center; 
-    display: flex;
-    flex-flow: row;
-    margin-top: 40px;
-  }
-
-  .entries {
-    display: flex;
-    flex-flow: row wrap;
-    padding:5px 
-  }
-  
-
-  .single-entry {
-    background-color: #9190e9 ;
-    width: 250px;
-    height: 250px;
-    flex: 25%;
-    justify-content: space-between;
-    margin:5px
-  }
 
 .delete {
     display: inline-block;
