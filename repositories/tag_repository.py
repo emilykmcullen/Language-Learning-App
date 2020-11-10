@@ -1,6 +1,10 @@
 from db.run_sql import run_sql
 from models.tag import Tag
 from models.translated_phrase import TranslatedPhrase
+from models.language import Language
+from models.first_language_phrase import FirstLanguagePhrase
+import repositories.language_repository as language_repository
+import repositories.first_language_phrase_repository as first_language_phrase_repository
 
 def save(tag):
     sql = "INSERT INTO tags(title) VALUES (%s) RETURNING id"
@@ -61,6 +65,8 @@ def translated_phrases(tag):
     results = run_sql(sql, values)
 
     for row in results:
-        translated_phrase = TranslatedPhrase(row['phrase'], row['language'], row['first_language_phrase'], row['mastered'], row['id'])
+        language = language_repository.select(row['language_id'])
+        first_language_phrase = first_language_phrase_repository.select(row['first_language_phrase_id'])
+        translated_phrase = TranslatedPhrase(row['phrase'], language, first_language_phrase, row['mastered'], row['id'])
         translated_phrases.append(translated_phrase)
     return translated_phrases

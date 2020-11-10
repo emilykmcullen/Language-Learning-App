@@ -16,9 +16,10 @@ sentence_snaps_blueprint = Blueprint("sentence_snaps_blueprint", __name__ )
 
 @sentence_snaps_blueprint.route("/sentence_snaps")
 def sentence_snaps():
+    all_tags = tag_repository.select_all()
     unmastered_translated_phrases = translated_phrase_repository.select_all_unmastered()
     tag_translated_phrases = tag_translated_phrase_repository.select_all()
-    return render_template("sentence_snaps/index.html", unmastered_translated_phrases=unmastered_translated_phrases, tag_translated_phrases=tag_translated_phrases)
+    return render_template("sentence_snaps/index.html", unmastered_translated_phrases=unmastered_translated_phrases, tag_translated_phrases=tag_translated_phrases, all_tags=all_tags)
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/delete", methods=["POST"])
 def delete_phrase(id):
@@ -116,7 +117,17 @@ def update_mastered(id):
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/show_answer")
 def show_answer(id):
     translated_phrase = translated_phrase_repository.select(id)
-    return render_template("sentence_snaps/show_answer.html", translated_phrase=translated_phrase)
+    return render_template("/sentence_snaps/show_answer.html", translated_phrase=translated_phrase)
+
+@sentence_snaps_blueprint.route("/sentence_snaps/filter", methods=["POST"])
+def filter_snaps():
+    tags_translated_phrases = tag_translated_phrase_repository.select_all()
+    all_tags = tag_repository.select_all()
+    tag = tag_repository.select_title(request.form['tag_choice'])
+    print(tag.title)
+    unmastered_translated_phrases = tag_repository.translated_phrases(tag)
+    print(unmastered_translated_phrases[0])
+    return render_template("sentence_snaps/filtered.html", tag=tag, tags_translated_phrases=tags_translated_phrases, all_tags=all_tags, unmastered_translated_phrases=unmastered_translated_phrases)
 
 
 

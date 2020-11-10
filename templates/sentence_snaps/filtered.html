@@ -10,7 +10,7 @@
 </h2>
 <h3>
   <div>
-        <form action="/sentence_snaps/filter" method='POST'>
+        <form action="/sentence_snaps/filter", method="POST">
         <label for="tag_choice">Filter by tag:</label>
             <select name="tag_choice" id="tag _choice">
                 {% for tag in all_tags %}
@@ -27,9 +27,9 @@
     <div class="entries">
         {% for unmastered_translated_phrase in unmastered_translated_phrases %}
             <div class="single-entry">
-                <p class="phrase"> '{{unmastered_translated_phrase.first_language_phrase.phrase.capitalize()}}'</p>
-                <p class="language"> Practise in: {{unmastered_translated_phrase.language.title.capitalize()}}</p>
-                <p class="difficulty">Difficulty: {{unmastered_translated_phrase.first_language_phrase.difficulty.capitalize()}}</p>  
+                <p class="phrase"> '{{unmastered_translated_phrase.first_language_phrase.phrase}}'</p>
+                <p class="language"> Practise in: {{unmastered_translated_phrase.language.title}}</p>
+                <p class="difficulty">Difficulty: {{unmastered_translated_phrase.first_language_phrase.difficulty}}</p>  
                 <div class="buttons">
                     <a href="/sentence_snaps/{{unmastered_translated_phrase.id}}/play">Play</a>
                     <a href="/sentence_snaps/{{unmastered_translated_phrase.id}}/edit">Edit</a>
@@ -37,7 +37,7 @@
                         <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:grey" aria-hidden="true"></i></button>
                     </form>
                 <p class="tags">
-                    {% for tag_translated_phrase in tag_translated_phrases  %}
+                    {% for tag_translated_phrase in tags_translated_phrases  %}
                         {% if tag_translated_phrase.translated_phrase.id == unmastered_translated_phrase.id %}
                             #{{tag_translated_phrase.tag.title}}   
                         {% endif %}
@@ -49,8 +49,6 @@
         {% endfor %}
     </div>
 </div>
-
-
 
 {% endblock content %}
 
