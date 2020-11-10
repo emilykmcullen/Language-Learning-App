@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
+from models.tag_translated_phrase import tagTranslatedPhrase
 from models.first_language_phrase import FirstLanguagePhrase
 from models.translated_phrase import TranslatedPhrase
 from models.language import Language
@@ -7,6 +8,8 @@ import repositories.first_language_phrase_repository as first_language_phrase_re
 import repositories.translated_phrase_repository as translated_phrase_repository
 import repositories.language_repository as language_repository
 import repositories.tag_repository as tag_repository
+import repositories.tag_translated_phrase_repository as tag_translated_phrase_repository
+
 import string
 
 sentence_snaps_blueprint = Blueprint("sentence_snaps_blueprint", __name__ )
@@ -36,17 +39,22 @@ def edit_phrase(id):
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>", methods=['POST'])
 def update_phrase(id):
+    if request.form['tags'] == 'none':
+        new_tag = None
+    else:
+        new_tag = tag_repository.select_title(request.form['tags'])
     translated_phrase = translated_phrase_repository.select(id)
     original_first_language_phrase_id = translated_phrase.first_language_phrase.id
-    language_input = request.form['language_choice']
+    language = language_repository.select_title(request.form['language_choice'])
     first_language_input = request.form['first_language_input']
     difficulty = request.form['difficulty_choice']
     translated_input = request.form['translated_input']
-    language = language_repository.select_title(language_input)
     mastered = True if "mastered" in request.form else False
     new_first_language_phrase = FirstLanguagePhrase(first_language_input, difficulty, original_first_language_phrase_id)
     first_language_phrase_repository.update(new_first_language_phrase)
     new_translated_phrase = TranslatedPhrase(translated_input, language, new_first_language_phrase, mastered, id)
+    tag_translated_phrase = tagTranslatedPhrase(new_translated_phrase, new_tag)
+    tag_translated_phrase_repository.save(tag_translated_phrase)
     translated_phrase_repository.update(new_translated_phrase)
     return redirect('/sentence_snaps')
     

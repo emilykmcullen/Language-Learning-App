@@ -29,6 +29,16 @@ def select(id):
         tag = Tag(result['title'], result['id'])
     return tag
 
+def select_title(title):
+    tag = None
+    sql = "SELECT * FROM tags WHERE title = %s"
+    values = [title]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        tag = Tag(result['title'], result['id'])
+    return tag
+
 def delete_all():
     sql = "DELETE FROM tags"
     run_sql(sql)
