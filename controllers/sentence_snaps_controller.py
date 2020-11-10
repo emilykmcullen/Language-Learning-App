@@ -32,11 +32,12 @@ def play_phrase(id):
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/edit")
 def edit_phrase(id):
+    tag_translated_phrases = tag_translated_phrase_repository.select_all()
     tags = tag_repository.select_all()
     languages = language_repository.select_all()
     translated_phrase = translated_phrase_repository.select(id)
     first_language_phrase = first_language_phrase_repository.select(translated_phrase.first_language_phrase.id)
-    return render_template("sentence_snaps/edit.html", first_language_phrase=first_language_phrase, translated_phrase=translated_phrase, languages=languages, tags=tags)
+    return render_template("sentence_snaps/edit.html", first_language_phrase=first_language_phrase, translated_phrase=translated_phrase, languages=languages, tags=tags, tag_translated_phrases=tag_translated_phrases)
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>", methods=['POST'])
 def update_phrase(id):
@@ -54,9 +55,9 @@ def update_phrase(id):
     new_first_language_phrase = FirstLanguagePhrase(first_language_input, difficulty, original_first_language_phrase_id)
     first_language_phrase_repository.update(new_first_language_phrase)
     new_translated_phrase = TranslatedPhrase(translated_input, language, new_first_language_phrase, mastered, id)
+    translated_phrase_repository.update(new_translated_phrase)
     tag_translated_phrase = tagTranslatedPhrase(new_translated_phrase, new_tag)
     tag_translated_phrase_repository.save(tag_translated_phrase)
-    translated_phrase_repository.update(new_translated_phrase)
     return redirect('/sentence_snaps')
     
 

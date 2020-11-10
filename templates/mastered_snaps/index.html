@@ -17,6 +17,14 @@
                         <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:grey" aria-hidden="true"></i></button>
                     </form>
             </div>
+            <p class="tags">
+                {% for tag_translated_phrase in tag_translated_phrases  %}
+                    {% if tag_translated_phrase.translated_phrase.id == mastered_translated_phrase.id %}
+                        #{{tag_translated_phrase.tag.title}}   
+                    {% endif %}
+                    
+                {% endfor %}
+            </p>
         </div>
     {% endfor %}
 </div>

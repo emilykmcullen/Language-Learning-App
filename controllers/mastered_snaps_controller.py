@@ -3,9 +3,13 @@ from flask import Blueprint
 from models.translated_phrase import TranslatedPhrase
 from models.first_language_phrase import FirstLanguagePhrase
 from models.language import Language
+from models.tag import Tag
+from models.tag_translated_phrase import tagTranslatedPhrase
 import repositories.translated_phrase_repository as translated_phrase_repository
 import repositories.first_language_phrase_repository as first_language_phrase_repository
 import repositories.language_repository as language_repository
+import repositories.tag_repository as tag_repository
+import repositories.tag_translated_phrase_repository as tag_translated_phrase_repository
 import string
 
 mastered_snaps_blueprint = Blueprint("mastered_snaps_blueprint", __name__)
@@ -13,7 +17,8 @@ mastered_snaps_blueprint = Blueprint("mastered_snaps_blueprint", __name__)
 @mastered_snaps_blueprint.route("/mastered_snaps")
 def mastered_snaps():
     mastered_translated_phrases = translated_phrase_repository.select_all_mastered()
-    return render_template("mastered_snaps/index.html",  mastered_translated_phrases=mastered_translated_phrases)
+    tag_translated_phrases = tag_translated_phrase_repository.select_all()
+    return render_template("mastered_snaps/index.html",  mastered_translated_phrases=mastered_translated_phrases, tag_translated_phrases=tag_translated_phrases)
 
 @mastered_snaps_blueprint.route("/mastered_snaps/<id>/delete", methods=["POST"])
 def delete_phrase(id):
@@ -27,13 +32,18 @@ def play_phrase(id):
 
 @mastered_snaps_blueprint.route("/mastered_snaps/<id>/edit")
 def edit_phrase(id):
+    tags = tag_repository.select_all()
     languages = language_repository.select_all()
     translated_phrase = translated_phrase_repository.select(id)
     first_language_phrase = first_language_phrase_repository.select(translated_phrase.first_language_phrase.id)
-    return render_template("mastered_snaps/edit.html", languages=languages, translated_phrase=translated_phrase, first_language_phrase=first_language_phrase)
+    return render_template("mastered_snaps/edit.html", languages=languages, translated_phrase=translated_phrase, first_language_phrase=first_language_phrase, tags=tags)
 
 @mastered_snaps_blueprint.route("/mastered_snaps/<id>", methods=['POST'])
 def update_phrase(id):
+    if request.form['tags'] == 'none':
+        new_tag = None
+    else:
+        new_tag = tag_repository.select_title(request.form['tags'])
     translated_phrase = translated_phrase_repository.select(id)
     original_first_language_phrase_id = translated_phrase.first_language_phrase.id
     language_input = request.form['language_choice']
@@ -46,6 +56,8 @@ def update_phrase(id):
     first_language_phrase_repository.update(new_first_language_phrase)
     new_translated_phrase = TranslatedPhrase(translated_input, language, new_first_language_phrase, mastered, id)
     translated_phrase_repository.update(new_translated_phrase)
+    tag_translated_phrase = tagTranslatedPhrase(new_translated_phrase, new_tag)
+    tag_translated_phrase_repository.save(tag_translated_phrase)
     return redirect('/mastered_snaps')
 
 @mastered_snaps_blueprint.route("/mastered_snaps/<id>/results", methods=["POST"])

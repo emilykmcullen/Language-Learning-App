@@ -34,9 +34,20 @@
         <p>
             <label for="tags">Add a tag:</label>
             <select name="tags" id="tags">
-                <option value="none">No tags please!</option>
+                <option value="none"></option>
                 {% for tag in tags %}
                 <option value={{tag.title}}>{{tag.title}}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <label for="remove_tags">Remove a tag:</label>
+            <select name="remove_tags" id="remove_tags">
+                <option value="none"></option>
+                {% for tag_translated_phrase in tag_translated_phrases %}
+                    {% if tag_translated_phrase.translated_phrase.id == translated_phrase.id %}
+                        <option value={{tag_translated_phrase.tag.title}}>{{tag_translated_phrase.tag.title}}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </p>

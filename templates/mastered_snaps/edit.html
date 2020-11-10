@@ -31,6 +31,15 @@
             <label for="mastered">Move back to sentence snaps:</label>
             <input type="checkbox" name="mastered" id="mastered" value="False">
         </p>
+        <p>
+            <label for="tags">Add a tag:</label>
+            <select name="tags" id="tags">
+                <option value="none">No tags please!</option>
+                {% for tag in tags %}
+                <option value={{tag.title}}>{{tag.title}}</option>
+                {% endfor %}
+            </select>
+        </p>
         <p class="submitbutton">
             <input type="submit" value="Submit">
         </p>
