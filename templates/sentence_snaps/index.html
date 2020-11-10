@@ -12,7 +12,8 @@
   <div>
         <form action="/sentence_snaps/filter" method='POST'>
         <label for="tag_choice">Filter by tag:</label>
-            <select name="tag_choice" id="tag _choice">
+            <select name="tag_choice" id="tag_choice">
+                <option value="show_all">Show All</option>
                 {% for tag in all_tags %}
                 <option value="{{tag.title}}">{{tag.title.capitalize()}}</option>
                 {% endfor %}

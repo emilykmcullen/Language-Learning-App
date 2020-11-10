@@ -121,13 +121,13 @@ def show_answer(id):
 
 @sentence_snaps_blueprint.route("/sentence_snaps/filter", methods=["POST"])
 def filter_snaps():
+    if request.form['tag_choice'] == 'show_all':
+        return redirect('/sentence_snaps')
     tags_translated_phrases = tag_translated_phrase_repository.select_all()
     all_tags = tag_repository.select_all()
-    tag = tag_repository.select_title(request.form['tag_choice'])
-    print(tag.title)
-    unmastered_translated_phrases = tag_repository.translated_phrases(tag)
-    print(unmastered_translated_phrases[0])
-    return render_template("sentence_snaps/filtered.html", tag=tag, tags_translated_phrases=tags_translated_phrases, all_tags=all_tags, unmastered_translated_phrases=unmastered_translated_phrases)
+    chosen_tag = tag_repository.select_title(request.form['tag_choice'])
+    unmastered_translated_phrases = tag_repository.translated_phrases(chosen_tag)
+    return render_template("sentence_snaps/filtered.html", chosen_tag=chosen_tag, tags_translated_phrases=tags_translated_phrases, all_tags=all_tags, unmastered_translated_phrases=unmastered_translated_phrases)
 
 
 

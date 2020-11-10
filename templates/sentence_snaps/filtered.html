@@ -13,9 +13,13 @@
         <form action="/sentence_snaps/filter", method="POST">
         <label for="tag_choice">Filter by tag:</label>
             <select name="tag_choice" id="tag _choice">
+                <option value="{{chosen_tag.title}}">{{chosen_tag.title.capitalize()}}</option>
                 {% for tag in all_tags %}
+                {% if tag.title != chosen_tag.title %}
                 <option value="{{tag.title}}">{{tag.title.capitalize()}}</option>
+                {% endif %}
                 {% endfor %}
+                <option value="show_all">Show All</option>
             </select>
             <p class="submitbutton">
                 <input type="submit" value="Submit">
