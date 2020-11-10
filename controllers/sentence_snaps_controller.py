@@ -33,11 +33,12 @@ def play_phrase(id):
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/edit")
 def edit_phrase(id):
     tag_translated_phrases = tag_translated_phrase_repository.select_all()
-    tags = tag_repository.select_all()
+    all_tags = tag_repository.select_all()
     languages = language_repository.select_all()
     translated_phrase = translated_phrase_repository.select(id)
+    tag_titles = translated_phrase_repository.tag_titles(translated_phrase)
     first_language_phrase = first_language_phrase_repository.select(translated_phrase.first_language_phrase.id)
-    return render_template("sentence_snaps/edit.html", first_language_phrase=first_language_phrase, translated_phrase=translated_phrase, languages=languages, tags=tags, tag_translated_phrases=tag_translated_phrases)
+    return render_template("sentence_snaps/edit.html", first_language_phrase=first_language_phrase, translated_phrase=translated_phrase, languages=languages, all_tags=all_tags, tag_translated_phrases=tag_translated_phrases, tag_titles=tag_titles)
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>", methods=['POST'])
 def update_phrase(id):

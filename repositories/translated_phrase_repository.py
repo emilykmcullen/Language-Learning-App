@@ -78,12 +78,20 @@ def update(translated_phrase):
 # this will return all the tags that are joined to a specific phrase
 def tags(translated_phrase):
     tags = []
-    sql = "SELECT tags.* FROM tags INNER JOIN tags_translated_phrases ON tags_translated_phrase.tag_id = tag.id WHERE tags_translated_phrases.translated_phrase_id = %s"
+    sql = "SELECT tags.* FROM tags INNER JOIN tags_translated_phrases ON tags_translated_phrases.tag_id = tags.id WHERE tags_translated_phrases.translated_phrase_id = %s"
     values = [translated_phrase.id]
     results = run_sql(sql, values)
-
     for row in results:
         tag = Tag(row['title'], row['id'])
         tags.append(tag)
     return tags
 
+def tag_titles(translated_phrase):
+    tag_titles = []
+    sql = "SELECT tags.* FROM tags INNER JOIN tags_translated_phrases ON tags_translated_phrases.tag_id = tags.id WHERE tags_translated_phrases.translated_phrase_id = %s"
+    values = [translated_phrase.id]
+    results = run_sql(sql, values)
+    for row in results:
+        tag_title = (row['title'])
+        tag_titles.append(tag_title)
+    return tag_titles

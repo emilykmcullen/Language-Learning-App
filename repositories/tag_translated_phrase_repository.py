@@ -36,13 +36,7 @@ def update(tag_translated_phrase):
     sql = "UPDATE tag_translated_phrases SET (translated_phrase_id, tag_id) = (%s, %s) WHERE id = %s"
     values = [tag_translated_phrase.translated_phrase.id, tag_translated_phrase.tag.id, tag_translated_phrase.id]
     run_sql(sql,values)
-
-# def return_id(translated_phrase, tag):
-#     sql = "SELECT * FROM tags_translated_phrase WHERE translated_phrase_id = translated_phrase.id  AND tag_id = tag.id"
-#     results = run_sql(sql)
-#     row_id = results[0]['id']
-#     return row_id
-
+    
 def delete_row(translated_phrase, tag):
     sql = "DELETE FROM tags_translated_phrases WHERE translated_phrase_id = (%s) AND tag_id = (%s)"
     values = [translated_phrase.id, tag.id]
