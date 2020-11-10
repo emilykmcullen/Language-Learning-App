@@ -41,4 +41,9 @@ def delete_row(translated_phrase, tag):
     sql = "DELETE FROM tags_translated_phrases WHERE translated_phrase_id = (%s) AND tag_id = (%s)"
     values = [translated_phrase.id, tag.id]
     run_sql(sql, values)
+
+def delete_by_tag_id(id):
+    sql = "DELETE FROM tags_translated_phrases WHERE tag_id = (%s)"
+    values = [id]
+    run_sql(sql, values)
     

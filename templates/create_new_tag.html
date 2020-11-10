@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+    <div>
+        <h1> Create A New Tag</h1>
+            <div>
+                <form action="/create_new_tag/new" method="POST">
+                    <p>
+                        <label for="new_tag">Name of new tag: #</label>
+                        <input type="text" name="new_tag" id="new_tag">
+                    </p>
+                    <p class="submitbutton">
+                        <input type="submit" value="Submit">
+                    </p>            
+                <!-- CREATE INPUT FOR NEW TITLE OF NEW TAG ETC -->
+                </form>
+                <div>
+                    Existing tags:
+                    {% for tag in all_tags %}
+                        #{{tag.title}}
+                        <form class="delete" action="/create_new_tag/{{tag.id}}/delete" method="POST">
+                            <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:grey" aria-hidden="true"></i></button>
+                        </form>
+                    {% endfor %}
+                </div>
+            </div>
+    </div>
+</section>
+{% endblock content %}
