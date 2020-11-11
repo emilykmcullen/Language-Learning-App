@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="blocktext">
+<div class="solo_blocktext">
     <h1>Your Sentence Snaps</h1>
 
 <h2>
@@ -11,7 +11,7 @@
 </h2>
 <h3>
     <div>
-        <form action="/sentence_snaps/filter" method='POST'>
+        <form action="/sentence_snaps/filter" method='POST' class="filter_form">
         <label for="tag_choice">Filter by tag:</label>
             <select name="tag_choice" id="tag_choice">
                 <option value="show_all">Show All</option>
@@ -20,12 +20,12 @@
                 {% endfor %}
             </select>
             <span>
-                <input type="submit" value="Submit" class="filter_submitbutton">
+                <input type="submit" value="Submit" class="submitbutton">
             </span>
         </form>
   </div>
   <div>
-    <form action="/sentence_snaps/filter_by_language" method='POST'>
+    <form action="/sentence_snaps/filter_by_language" method='POST' class="filter_form">
       <label for="filter_by_language">Filter by language:</label>
             <select name="filter_by_language" id="filter_by_language">
               <option value="{{chosen_language.id}}">{{chosen_language.title.capitalize()}}</option>
@@ -42,7 +42,7 @@
         </form>
 </h3>
     <div class="entries">
-        {% for phrase in all_phrases_in_language %}
+        {% for phrase in all_unmastered_phrases_in_language %}
             <div class="single_entry">
                 <p class="phrase"> '{{phrase.first_language_phrase.phrase}}'</p>
                 <p class="language"> Practise in: {{phrase.language.title}}</p>

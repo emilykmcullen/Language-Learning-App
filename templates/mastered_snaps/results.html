@@ -5,7 +5,7 @@
         <h1>Results</h1>
     {% if result == True %}
         <div class="play_single_entry">
-            <p>{{answer.capitalize()}} <i class="fa fa-check fa-2x" style="color:yellow" aria-hidden="true"></i> </p>
+            <p>'{{answer.capitalize()}}'' <i class="fa fa-check fa-2x" style="color:yellow" aria-hidden="true"></i> </p>
             <!-- <i class="fa fa-grin-stars"></i> -->
             <p> Well done!</p>
             <p>
@@ -14,23 +14,23 @@
         </div>
         {% else %}
         <div class="play_single_entry">
-            <p>{{answer.capitalize()}}</p>
-            <p> Whoops! <i class="fas fa-sad-tear fa-2x"></i></p>
+            <p>'{{answer.capitalize()}}'</p>
+            <p><i class="fas fa-sad-tear fa-2x" style="color:yellow"></i></p>
             <form action="/mastered_snaps/{{translated_phrase.id}}/show_answer" method="GET">
                 <p class="submitbutton">
                     <input type="submit" value="Show answer">
                 </p>
             </form>
-            <form action="/mastered_snaps/{{translated_phrase.id}}/update_mastered" method="POST">
+            <!-- <form action="/mastered_snaps/{{translated_phrase.id}}/update_mastered" method="POST">
                 <p class="submitbutton">
-                    <input type="submit" value="Move this phrase back to my Sentence Snaps">
+                    <input type="submit" value="Move to Sentence Snaps">
                 </p>
-            </form>
+            </form> -->
             <p>
-                <a href="/mastered_snaps/{{translated_phrase.id}}/play">Try Again</a>
+                <a href="/mastered_snaps/{{translated_phrase.id}}/play" class="submitbutton">Try Again</a>
             </p>
             <p>
-                <a href="{{ url_for('mastered_snaps_blueprint.mastered_snaps') }}">Back to Mastered Snaps</a>
+                <a href="{{ url_for('mastered_snaps_blueprint.mastered_snaps') }}" class="submitbutton">Back to Mastered Snaps</a>
             </p>
         </div>
     {% endif %}

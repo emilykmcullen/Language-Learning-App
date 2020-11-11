@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="blocktext">
+<div class="solo_blocktext">
 <h1>Your Sentence Snaps</h1>
 
 <h2>
@@ -10,7 +10,7 @@
 </h2>
 <h3>
   <div>
-        <form action="/sentence_snaps/filter", method="POST">
+        <form action="/sentence_snaps/filter", method="POST" class="filter_form">
         <label for="tag_choice">Filter by tag:</label>
             <select name="tag_choice" id="tag_choice">
                 <option value="{{chosen_tag.title}}">{{chosen_tag.title.capitalize()}}</option>
@@ -25,8 +25,19 @@
                 <input type="submit" value="Submit">
             </span>
         </form>
-
-  </div>
+    <form action="/sentence_snaps/filter_by_language" method='POST' class="filter_form">
+      <label for="filter_by_language">Filter by language:</label>
+          <select name="filter_by_language" id="filter_by_language">
+              <option value="show_all">Show All</option>
+              {% for language in all_languages %}
+              <option value="{{language.id}}">{{language.title.capitalize()}}</option>
+              {% endfor %}
+          </select>
+          <span>
+              <input type="submit" value="submit" class="filter_submitbutton">
+          </span>
+    </form>
+</div>
 </h3>
     <div class="entries">
         {% for unmastered_translated_phrase in unmastered_translated_phrases %}

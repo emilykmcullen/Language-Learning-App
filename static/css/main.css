@@ -70,6 +70,7 @@ h1 {
   margin:10px;
   border-radius: 20px;
   text-align: center;
+  padding: 20px;
 }
 
 .single_entry:hover {
@@ -121,8 +122,6 @@ input[type="text"]:active {
     border:none;
     border-bottom: solid 2px black;
     outline: none;
-    /* color: #9190e9; */
-    /* color: #7b59e4; */
 }
 
 input[type="text"]:focus {
@@ -131,8 +130,6 @@ input[type="text"]:focus {
   border:none;
   border-bottom: solid 2px black;
   outline: none;
-  color: #9190e9;
-  /* color: #7b59e4; */
 }
 
 
@@ -208,4 +205,14 @@ a:link, a:visited {
 
 ::placeholder { 
   color: #4d3a91;
+}
+
+.filter_form {
+  padding: 5px;
+  display: inline-block;
+
+}
+
+.user_input {
+  color: black;
 }

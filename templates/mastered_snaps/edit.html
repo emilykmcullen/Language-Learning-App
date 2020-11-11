@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="solo_blocktext">
 <h1>Edit!</h1>
+<div class="play_single_entry">
 <form action="/mastered_snaps/{{translated_phrase.id}}" method="POST">
     <div>
         <p>
-            <label for="first_language_input">Sentence/phrase:</label>
-            <input type="text" name="first_language_input" id="first_language_input" value="{{first_language_phrase.phrase}}">
+            <label for="first_language_input" class="input_text">Sentence/phrase:</label>
+            <input type="text" name="first_language_input" id="first_language_input" value="{{first_language_phrase.phrase}}" class="user_input">
         </p>
         <p> 
-            <label for="language_choice">I want to practise this phrase in:</label>
+            <label for="language_choice" class="input_text">I want to practise this phrase in:</label>
                 <select name="language_choice" id="language_choice">
             {% for language in languages %}
                     <option value={{language.title}}
@@ -21,10 +22,10 @@
             {% endfor %}
                 </select>
         </p>
-            <label for="translated_input">Translated sentence/phrase:</label>
+            <label for="translated_input" class="input_text">Translated sentence/phrase:</label>
             <input type="text" name="translated_input" id="translated_input" value="{{translated_phrase.phrase.capitalize()}}">
         <p>
-            <label for="difficulty_choice">Difficulty:</label>
+            <label for="difficulty_choice" class="input_text">Difficulty:</label>
                 <select name="difficulty_choice" id="difficulty_choice">
                     <option value="easy"
                     {% if first_language_phrase.difficulty == "easy" %}selected="selected"{% endif %}>
@@ -38,11 +39,11 @@
                 </select>
         </p>
         <p>
-            <label for="mastered">Move back to sentence snaps:</label>
+            <label for="mastered" class="input_text">Move back to sentence snaps:</label>
             <input type="checkbox" name="mastered" id="mastered" value="False">
         </p>
         <p>
-            <label for="tags">Add a tag:</label>
+            <label for="tags" class="input_text">Add a tag:</label>
             <select name="tags" id="tags">
                 <option value="none">No tags please!</option>
                 {% for tag in all_tags %}
@@ -53,7 +54,7 @@
             </select>
         </p>
         <p>
-            <label for="remove_tags">Remove a tag:</label>
+            <label for="remove_tags" class="input_text">Remove a tag:</label>
             <select name="remove_tags" id="remove_tags">
                 <option value="none"></option>
                 {% for tag_translated_phrase in tag_translated_phrases %}
@@ -70,4 +71,6 @@
     </div>
 
 </form>
+</div>
+</div>
 {% endblock content %}
