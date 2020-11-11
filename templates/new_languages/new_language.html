@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="blocktext">
+    <h1>Add A New Language</h1>
+        <div>
+            <form action="/add_new_language/new" method="POST">
+                <p>
+                    <label for="new_language">Lanugage to Add:</label>
+                    <input type="text" name="new_language" id="new_language">
+                </p>
+                <p class="submitbutton">
+                    <input type="submit" value="Submit">
+                </p>
+            </form>
+            <div>
+                Current languages:
+                {% for language in all_languages %}
+                    {{language.title.capitalize()}}
+                    <form class="delete" action="/add_new_language/{{language.id}}/delete" method="POST">
+                        <button class="trash-button"><i class="far fa-trash-alt fa-2x" style="color:grey" aria-hidden="true"></i></button>
+                    </form>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+
+
+
+</div>
+    
+{% endblock content %}

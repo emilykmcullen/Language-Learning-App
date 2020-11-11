@@ -5,8 +5,8 @@
 <h1>Your Sentence Snaps</h1>
 
 <h2>
-    <a href="/sentence_snaps/new">Add New Snap</a>
-    <a href="/create_new_tag">Create New Tag</a>
+    <a href="/sentence_snaps/new" class="navitem">Create New Snap</a>
+    <a href="/create_new_tag" class="navitem">Create New Tag</a>
 </h2>
 <h3>
   <div>
@@ -27,7 +27,7 @@
 </h3>
     <div class="entries">
         {% for unmastered_translated_phrase in unmastered_translated_phrases %}
-            <div class="single-entry">
+            <div class="single_entry">
                 <p class="phrase"> '{{unmastered_translated_phrase.first_language_phrase.phrase.capitalize()}}'</p>
                 <p class="language"> Practise in: {{unmastered_translated_phrase.language.title.capitalize()}}</p>
                 <p class="difficulty">Difficulty: {{unmastered_translated_phrase.first_language_phrase.difficulty.capitalize()}}</p>  
