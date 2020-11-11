@@ -30,7 +30,7 @@
 </h3>
     <div class="entries">
         {% for unmastered_translated_phrase in unmastered_translated_phrases %}
-            <div class="single-entry">
+            <div class="single_entry">
                 <p class="phrase"> '{{unmastered_translated_phrase.first_language_phrase.phrase}}'</p>
                 <p class="language"> Practise in: {{unmastered_translated_phrase.language.title}}</p>
                 <p class="difficulty">Difficulty: {{unmastered_translated_phrase.first_language_phrase.difficulty}}</p>  
@@ -38,7 +38,7 @@
                     <a href="/sentence_snaps/{{unmastered_translated_phrase.id}}/play">Play</a>
                     <a href="/sentence_snaps/{{unmastered_translated_phrase.id}}/edit">Edit</a>
                     <form class="delete" action="/sentence_snaps/{{unmastered_translated_phrase.id}}/delete" method="POST">
-                        <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:grey" aria-hidden="true"></i></button>
+                        <button class="trash-button"><i class="far fa-trash-alt fa-2x" style="color:grey" aria-hidden="true"></i></button>
                     </form>
                 <p class="tags">
                     {% for tag_translated_phrase in tags_translated_phrases  %}

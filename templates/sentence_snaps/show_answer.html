@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>Show Answer</h1>
-
-<div>
-    <p>Original phrase: {{translated_phrase.first_language_phrase.phrase}}</p>
-    <p>In {{translated_phrase.language.title}} : {{translated_phrase.phrase}}</p>
-    <p><a href="/sentence_snaps/{{translated_phrase.id}}/edit">Edit this phrase</a>
-    <form class="delete" action="/sentence_snaps/{{translated_phrase.id}}/delete" method="POST">
-        <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
-    </form>
-    <p></p>
-        <a href="{{ url_for('sentence_snaps_blueprint.sentence_snaps') }}">Back to Sentence Snaps</a>
-    </p>
+<div class="solo_blocktext">
+    <h1>Show Answer</h1>
+    <div class="single_entry">
+        <p class="input_text">Original phrase:</p>
+        {{translated_phrase.first_language_phrase.phrase}}
+        <p class="input_text">In {{translated_phrase.language.title.capitalize()}}:</p>
+        {{translated_phrase.phrase}}
+        <div class="buttons">
+        <a href="/sentence_snaps/{{translated_phrase.id}}/edit">Edit this phrase</a>
+        <form class="delete" action="/sentence_snaps/{{translated_phrase.id}}/delete" method="POST">
+            <button class="trash-button"><i class="far fa-trash-alt fa-2x" style="color:grey" aria-hidden="true"></i></button>
+        </form>
+        </div>
+        <p>
+            <a href="{{ url_for('sentence_snaps_blueprint.sentence_snaps') }}">Back to Sentence Snaps</a>
+        </p>
+    </div>
 </div>
     
 {% endblock content %}

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="blocktext">
+<div class="solo_blocktext">
     <h1>Add A New Language</h1>
         <div>
-            <form action="/add_new_language/new" method="POST">
+            <form action="/add_new_language/new" method="POST" class="single_entry">
                 <p>
-                    <label for="new_language">Lanugage to Add:</label>
+                    <label for="new_language" class="input_text">Language to Add:</label>
                     <input type="text" name="new_language" id="new_language">
                 </p>
                 <p class="submitbutton">
