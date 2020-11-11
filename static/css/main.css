@@ -233,3 +233,10 @@ a:link, a:visited {
 .user_input {
   color: black;
 }
+
+.trash-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+}

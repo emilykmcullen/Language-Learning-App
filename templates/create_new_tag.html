@@ -18,7 +18,7 @@
                 {% for tag in all_tags %}
                     #{{tag.title}}
                     <form class="delete" action="/create_new_tag/{{tag.id}}/delete" method="POST">
-                        <button class="trash-button"><i class="far fa-trash-alt fa-2x" style="color:grey" aria-hidden="true"></i></button>
+                        <button class="trash-button"><i class="far fa-trash-alt fa-1x"  aria-hidden="true"></i></button>
                     </form>
                 {% endfor %}
             </div>
