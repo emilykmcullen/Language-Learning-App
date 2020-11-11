@@ -12,7 +12,7 @@
   <div>
         <form action="/sentence_snaps/filter", method="POST" class="filter_form">
         <label for="tag_choice">Filter by tag:</label>
-            <select name="tag_choice" id="tag_choice">
+            <select name="tag_choice" id="tag_choice" class="filter_drop_down">
                 <option value="{{chosen_tag.title}}">{{chosen_tag.title.capitalize()}}</option>
                 {% for tag in all_tags %}
                 {% if tag.title != chosen_tag.title %}
@@ -27,7 +27,7 @@
         </form>
     <form action="/sentence_snaps/filter_by_language" method='POST' class="filter_form">
       <label for="filter_by_language">Filter by language:</label>
-          <select name="filter_by_language" id="filter_by_language">
+          <select name="filter_by_language" id="filter_by_language" class="filter_drop_down">
               <option value="show_all">Show All</option>
               {% for language in all_languages %}
               <option value="{{language.id}}">{{language.title.capitalize()}}</option>

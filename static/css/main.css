@@ -141,6 +141,10 @@ select {
     outline: none;
 }
 
+.filter_drop_down {
+  background-color: #7b59e4;
+}
+
 input[type=submit] {
     background-color:#4d3a91;
     color: white;
