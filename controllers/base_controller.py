@@ -13,6 +13,10 @@ base_blueprint = Blueprint("base", __name__)
 def index():
     return render_template('index.html', title='Home')
 
+@base_blueprint.route('/info')
+def info():
+    return render_template('info.html', title="Info")
+
 @base_blueprint.route('/create_new_tag')
 def create_new_tag():
     all_tags = tag_repository.select_all()
@@ -37,5 +41,7 @@ def play_random():
     number = len(all_translated_phrases)
     random_number = random.randint(1, number)
     return redirect(f"/sentence_snaps/{random_number}/play")
+
+
 
 

@@ -15,7 +15,7 @@
         {% else %}
         <div class="play_single_entry">
             <p>'{{answer.capitalize()}}'</p>
-            <p><i class="fas fa-sad-tear fa-2x" style="color:yellow"></i></p>
+            <p><i class="fas fa-sad-tear fa-2x" style="color:red"></i></p>
             <form action="/mastered_snaps/{{translated_phrase.id}}/show_answer" method="GET">
                 <p class="submitbutton">
                     <input type="submit" value="Show answer">

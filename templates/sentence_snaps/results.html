@@ -20,7 +20,7 @@
         {% else %}
         <div class="play_single_entry">
             <p class="phrase">'{{answer.capitalize()}}'</p> 
-            <p><i class="fas fa-sad-tear fa-2x" style="color:yellow"></i></p>
+            <p><i class="fas fa-sad-tear fa-2x" style="color:red"></i></p>
             <!-- <p> Whoops!</p> -->
             <form action="/sentence_snaps/{{translated_phrase.id}}/show_answer" method="GET">
                 <p class="submitbutton">

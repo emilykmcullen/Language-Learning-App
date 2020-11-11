@@ -59,6 +59,7 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   max-width: 1200px;
   margin: 0 auto;
+  grid-gap: 20px;
 }
 
 
@@ -67,7 +68,7 @@ h1 {
   background-color: #9190e9 ;
   width: 250px;
   /* height: 250px; */
-  margin:10px;
+  /* margin:10px; */
   border-radius: 20px;
   text-align: center;
   padding: 20px;
@@ -86,10 +87,22 @@ h1 {
   margin: 0 auto;
   border-radius: 20px;
   text-align: center;
+  padding: 20px;
 }
 
 .play_single_entry:hover {
   opacity: 1;
+}
+
+.info {
+  background-color: #9190e9 ;
+  width: 250px;
+  /* height: 250px; */
+  margin:5px;
+  margin: 0 auto;
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
 }
 
 .play_form {
