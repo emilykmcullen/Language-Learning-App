@@ -18,12 +18,13 @@ body {
     opacity: 1;
 }
 
+
 body > ul> li> a {
     color: black;
   }
 
 .navlist{
-    padding-left: 0;
+    /* padding-left: 0; */
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -240,3 +241,4 @@ a:link, a:visited {
   cursor: pointer;
   color: black;
 }
+
