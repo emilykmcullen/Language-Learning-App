@@ -16,10 +16,11 @@ sentence_snaps_blueprint = Blueprint("sentence_snaps_blueprint", __name__ )
 
 @sentence_snaps_blueprint.route("/sentence_snaps")
 def sentence_snaps():
+    all_languages =language_repository.select_all()
     all_tags = tag_repository.select_all()
     unmastered_translated_phrases = translated_phrase_repository.select_all_unmastered()
     tag_translated_phrases = tag_translated_phrase_repository.select_all()
-    return render_template("sentence_snaps/index.html", unmastered_translated_phrases=unmastered_translated_phrases, tag_translated_phrases=tag_translated_phrases, all_tags=all_tags)
+    return render_template("sentence_snaps/index.html", unmastered_translated_phrases=unmastered_translated_phrases, tag_translated_phrases=tag_translated_phrases, all_tags=all_tags, all_languages=all_languages)
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/delete", methods=["POST"])
 def delete_phrase(id):
@@ -128,6 +129,23 @@ def filter_snaps():
     chosen_tag = tag_repository.select_title(request.form['tag_choice'])
     unmastered_translated_phrases = tag_repository.translated_phrases(chosen_tag)
     return render_template("sentence_snaps/filtered.html", chosen_tag=chosen_tag, tags_translated_phrases=tags_translated_phrases, all_tags=all_tags, unmastered_translated_phrases=unmastered_translated_phrases)
+
+@sentence_snaps_blueprint.route("/sentence_snaps/filter_by_language", methods=["POST"])
+def filter_by_language():
+    if request.form['filter_by_language'] == 'show_all':
+        return redirect('/sentence_snaps')
+    chosen_language_id = request.form['filter_by_language']
+    print(chosen_language_id)
+    chosen_language = language_repository.select(chosen_language_id)
+    print(chosen_language.title)
+    all_phrases_in_language = translated_phrase_repository.select_by_language(chosen_language_id)
+    tags_translated_phrases = tag_translated_phrase_repository.select_all()
+    all_tags = tag_repository.select_all()
+    all_languages = language_repository.select_all()
+    print(all_phrases_in_language)
+    return render_template("sentence_snaps/filtered_by_language.html", all_phrases_in_language=all_phrases_in_language, chosen_language=chosen_language, tags_translated_phrases=tags_translated_phrases, all_tags=all_tags, all_languages=all_languages)
+
+
 
 
 

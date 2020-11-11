@@ -6,15 +6,15 @@
 
     <div class="entries">
         {% for mastered_translated_phrase in mastered_translated_phrases %}
-            <div class="single-entry">
-                {{mastered_translated_phrase.first_language_phrase.phrase}}
-                <p class="language"> Practise in: {{mastered_translated_phrase.language.title}}</p>
-                <p class="difficulty">Difficulty: {{mastered_translated_phrase.first_language_phrase.difficulty}}</p>
+            <div class="single_entry">
+                <p class="phrase">'{{mastered_translated_phrase.first_language_phrase.phrase}}'</p>
+                <p class="language"> Practise in: {{mastered_translated_phrase.language.title.capitalize()}}</p>
+                <p class="difficulty">Difficulty: {{mastered_translated_phrase.first_language_phrase.difficulty.capitalize()}}</p>
                 <div class="buttons">
                         <a href="/mastered_snaps/{{mastered_translated_phrase.id}}/play">Play</a>
                         <a href="/mastered_snaps/{{mastered_translated_phrase.id}}/edit">Edit</a>
                         <form class="delete" action="/mastered_snaps/{{mastered_translated_phrase.id}}/delete" method="POST">
-                            <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:grey" aria-hidden="true"></i></button>
+                            <button class="trash-button"><i class="far fa-trash-alt fa-2x" style="color:grey" aria-hidden="true" ></i></button>
                         </form>
                 </div>
                 <p class="tags">

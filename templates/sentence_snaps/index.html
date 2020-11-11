@@ -18,11 +18,24 @@
                 <option value="{{tag.title}}">{{tag.title.capitalize()}}</option>
                 {% endfor %}
             </select>
-            <p class="submitbutton">
-                <input type="submit" value="Submit">
-            </p>
+            <span>
+                <input type="submit" value="Submit" class="filter_submitbutton">
+            </span>
         </form>
-
+  </div>
+  <div>
+      <form action="/sentence_snaps/filter_by_language" method='POST'>
+        <label for="filter_by_language">Filter by language:</label>
+            <select name="filter_by_language" id="filter_by_language">
+                <option value="show_all">Show All</option>
+                {% for language in all_languages %}
+                <option value="{{language.id}}">{{language.title.capitalize()}}</option>
+                {% endfor %}
+            </select>
+            <span>
+                <input type="submit" value="submit" class="filter_submitbutton">
+            </span>
+    </form>
   </div>
 </h3>
     <div class="entries">

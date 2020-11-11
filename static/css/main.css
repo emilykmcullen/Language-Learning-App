@@ -81,7 +81,8 @@ h1 {
   background-color: #9190e9 ;
   width: 250px;
   /* height: 250px; */
-  margin:5px;
+  /* margin:5px; */
+  margin: 0 auto;
   border-radius: 20px;
   text-align: center;
 }
@@ -99,7 +100,7 @@ h1 {
 }
 
 .input_text {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 hr {
@@ -120,12 +121,23 @@ input[type="text"]:active {
     border:none;
     border-bottom: solid 2px black;
     outline: none;
-    color: #9190e9;
+    /* color: #9190e9; */
     /* color: #7b59e4; */
 }
 
+input[type="text"]:focus {
+  background-color: #7b59e4;
+  color: black;
+  border:none;
+  border-bottom: solid 2px black;
+  outline: none;
+  color: #9190e9;
+  /* color: #7b59e4; */
+}
+
+
 select {
-    background-color: #7b59e4;
+    background-color: #9190e9;
     color: black;
     border:none;
     border-bottom: solid 2px black;
@@ -144,7 +156,7 @@ input[type=submit] {
   }
 
 .submitbutton {
-    width: 50%;
+    /* width: 50%; */
     opacity: 0.7;
     /* margin: 0 auto; */
 }
@@ -154,7 +166,7 @@ input[type=submit] {
 }
 
 .play_submitbutton {
-  width: 50%;
+  /* width: 50%; */
   opacity: 0.7;
   text-align: center;
   /* margin: 0 auto; */
@@ -162,6 +174,11 @@ input[type=submit] {
 
 .play_submitbutton:hover {
   opacity: 1;
+}
+
+.filter_submitbutton {
+  padding: 0;
+  font-size: 10px;
 }
 
 p {

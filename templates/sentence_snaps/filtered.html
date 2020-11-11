@@ -5,14 +5,14 @@
 <h1>Your Sentence Snaps</h1>
 
 <h2>
-    <a href="/sentence_snaps/new">Add New Snap</a>
-    <a href="/create_new_tag">Create New Tag</a>
+    <a href="/sentence_snaps/new" class="navitem">Add New Snap</a>
+    <a href="/create_new_tag" class="navitem">Create New Tag</a>
 </h2>
 <h3>
   <div>
         <form action="/sentence_snaps/filter", method="POST">
         <label for="tag_choice">Filter by tag:</label>
-            <select name="tag_choice" id="tag _choice">
+            <select name="tag_choice" id="tag_choice">
                 <option value="{{chosen_tag.title}}">{{chosen_tag.title.capitalize()}}</option>
                 {% for tag in all_tags %}
                 {% if tag.title != chosen_tag.title %}
@@ -21,9 +21,9 @@
                 {% endfor %}
                 <option value="show_all">Show All</option>
             </select>
-            <p class="submitbutton">
+            <span class="submitbutton">
                 <input type="submit" value="Submit">
-            </p>
+            </span>
         </form>
 
   </div>

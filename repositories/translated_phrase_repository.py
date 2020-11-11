@@ -61,11 +61,11 @@ def select(id):
         translated_phrase = TranslatedPhrase(result['phrase'], language, first_language_phrase, result['mastered'], result['id'])
     return translated_phrase
 
-def select_by_language(language_id):
+def select_by_language(id):
     phrases_by_language = []
     sql = "SELECT * FROM translated_phrases WHERE language_id = %s"
-    values = [language_id]
-    results = run_sql(sql)
+    values = [id]
+    results = run_sql(sql, values)
 
     for row in results:
         first_language_phrase = first_language_phrase_repository.select(row['first_language_phrase_id'])
@@ -73,7 +73,6 @@ def select_by_language(language_id):
         phrase = TranslatedPhrase(row['phrase'], language, first_language_phrase, row['mastered'], row['id'])
         phrases_by_language.append(phrase)
     return phrases_by_language
-
 
 def delete_all():
     sql = "DELETE FROM translated_phrases"
