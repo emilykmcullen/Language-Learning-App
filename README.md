@@ -12,10 +12,12 @@ MVP:
 POSSIBLE EXTENSIONS:
 -The user could be able to sort the sentences by ‘tags’
 -The user could be able to move sentences/words from an ‘in practice’ section to a ‘mastered’ 
-  section once they are confident with the sentence and don’t want to practice it anymore ( I’m 
-  not sure quite how to do this, perhaps by having a property in the sentence class ‘mastered’ 
-  that is a boolean and is set to false on creation, once the user practises the sentence on the
-  ‘Results’ page they could have an option to check a box that says ‘I have mastered this’. If 
-  they check this box it would run a function to update the boolean to True and the sentence could
-  then be place in the ‘mastered section’
+  section once they are confident with the sentence and don’t want to practice it anymore
 -The user could be able to generate a random one of their sentences to practise rather than selecting it themselves
+
+TO RUN:
+
+1. psql -d lingua_snaps -f db/lingua_snaps.sql
+2. python3 console.py (this will populate the db with the info in console.py, you can then enter q to quit)
+3. python3 -m flask run (now you can go to localhost:5000)
+4. if you want to check the db use psql -d lingua_snaps

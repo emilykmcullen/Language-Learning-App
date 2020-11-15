@@ -7,7 +7,7 @@
     <form action="/sentence_snaps/{{translated_phrase.id}}/results" method="POST" class="play_form">
         <div class="play_single_entry">
             <p class="phrase">
-                "{{translated_phrase.first_language_phrase.phrase}}"
+                "{{translated_phrase.first_language_phrase.phrase.capitalize()}}"
             </p>
             <p>
                 <label for="answer">In {{translated_phrase.language.title.capitalize()}}:</label>

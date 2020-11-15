@@ -22,6 +22,12 @@ def create_new_tag():
     all_tags = tag_repository.select_all()
     return render_template('create_new_tag.html', title="Create A New Tag", all_tags=all_tags)
 
+# to go to the page to create a new tag
+# call the function create_new_tag()
+# inside the function select all the tags currently in the databse using tag_repository.select_all()
+# and save this list to a variable name all_tags
+# the function must return render_template with the parameters of the html page for create_new_tag, the title "Create a New Tag", and the list of tags all_tags
+
 @base_blueprint.route('/create_new_tag/new', methods=["POST"])
 def save_created_tag():
     title = request.form['new_tag']

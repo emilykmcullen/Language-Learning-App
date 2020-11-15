@@ -5,9 +5,9 @@
     <h1>Show Answer</h1>
     <div class="play_single_entry">
         <p class="phrase">Original phrase:</p>
-        {{translated_phrase.first_language_phrase.phrase}}
+        '{{translated_phrase.first_language_phrase.phrase.capitalize()}}'
         <p class="phrase">In {{translated_phrase.language.title.capitalize()}}:</p>
-        {{translated_phrase.phrase}}
+        '{{translated_phrase.phrase.capitalize()}}'
         <div class="buttons">
         <a href="/sentence_snaps/{{translated_phrase.id}}/edit">Edit this phrase</a>
         <form class="delete" action="/sentence_snaps/{{translated_phrase.id}}/delete" method="POST">

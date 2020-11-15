@@ -33,7 +33,7 @@ language_repository.save(language_2)
 language_3 = Language("german")
 language_repository.save(language_3)
 
-first_language_phrase_1 = FirstLanguagePhrase("I looked out of the window and did a dreamy sigh", "medium")
+first_language_phrase_1 = FirstLanguagePhrase("dreamy sigh", "medium")
 first_language_phrase_repository.save(first_language_phrase_1)
 
 first_language_phrase_2 = FirstLanguagePhrase("a drop of milk", "medium")
@@ -42,7 +42,7 @@ first_language_phrase_repository.save(first_language_phrase_2)
 first_language_phrase_3 = FirstLanguagePhrase("hello", "easy")
 first_language_phrase_repository.save(first_language_phrase_3)
 
-first_language_phrase_4 = FirstLanguagePhrase("my secret dream", "medium")
+first_language_phrase_4 = FirstLanguagePhrase("I fell asleep", "medium")
 first_language_phrase_repository.save(first_language_phrase_4)
 
 first_language_phrase_5 = FirstLanguagePhrase("I allowed myself a pleasant read", "difficult")
@@ -54,7 +54,7 @@ first_language_phrase_repository.save(first_language_phrase_6)
 first_language_phrase_7 = FirstLanguagePhrase("I like breakfast", "easy")
 first_language_phrase_repository.save(first_language_phrase_7)
 
-translated_phrase_1= TranslatedPhrase("ho guardato dalla finestra e ho fatto un sospiro sognante", language_1, first_language_phrase_1, mastered=False)
+translated_phrase_1= TranslatedPhrase("sospiro sognante", language_1, first_language_phrase_1, mastered=False)
 translated_phrase_repository.save(translated_phrase_1)
 
 translated_phrase_2= TranslatedPhrase("una goccia di latte", language_1, first_language_phrase_2, mastered=False)
@@ -66,7 +66,7 @@ translated_phrase_repository.save(translated_phrase_3)
 translated_phrase_4= TranslatedPhrase("hola", language_2, first_language_phrase_3, mastered=False)
 translated_phrase_repository.save(translated_phrase_4)
 
-translated_phrase_5 = TranslatedPhrase("il mio sogno nel cassetto", language_1, first_language_phrase_4, mastered=True)
+translated_phrase_5 = TranslatedPhrase("mi sono addormentata", language_1, first_language_phrase_4, mastered=True)
 translated_phrase_repository.save(translated_phrase_5)
 
 translated_phrase_6 = TranslatedPhrase("mi sono concessa una piacevole lettura", language_1, first_language_phrase_5, mastered=False)
