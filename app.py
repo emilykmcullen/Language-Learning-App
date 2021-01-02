@@ -19,4 +19,3 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-# moving things to mastered area - do I need 'mastered' property in first_language_phrases too? Or just in translated_phrases?
