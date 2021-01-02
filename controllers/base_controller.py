@@ -31,7 +31,7 @@ def create_new_tag():
 @base_blueprint.route('/create_new_tag/new', methods=["POST"])
 def save_created_tag():
     title = request.form['new_tag']
-    tag = Tag(title)
+    tag = Tag(title.replace(" ", "-"))
     tag_repository.save(tag)
     return redirect('/create_new_tag')
 
