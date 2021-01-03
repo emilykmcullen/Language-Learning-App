@@ -15,7 +15,7 @@ POSSIBLE EXTENSIONS:
   section once they are confident with the sentence and don’t want to practice it anymore
 -The user could be able to generate a random one of their sentences to practise rather than selecting it themselves
 
-TO RUN:
+TO RUN THE APP:
 
 1. psql -d lingua_snaps -f db/lingua_snaps.sql
 2. python3 console.py (this will populate the db with the info in console.py, you can then enter q to quit)
