@@ -14,13 +14,15 @@ import string
 
 sentence_snaps_blueprint = Blueprint("sentence_snaps_blueprint", __name__ )
 
-@sentence_snaps_blueprint.route("/sentence_snaps")
+@sentence_snaps_blueprint.route("/")
+# @sentence_snaps_blueprint.route("/sentence_snaps")
 def sentence_snaps():
     all_languages =language_repository.select_all()
     all_tags = tag_repository.select_all()
     unmastered_translated_phrases = translated_phrase_repository.select_all_unmastered()
     tag_translated_phrases = tag_translated_phrase_repository.select_all()
-    return render_template("sentence_snaps/index.html", unmastered_translated_phrases=unmastered_translated_phrases, tag_translated_phrases=tag_translated_phrases, all_tags=all_tags, all_languages=all_languages)
+    return render_template("index.html", unmastered_translated_phrases=unmastered_translated_phrases, tag_translated_phrases=tag_translated_phrases, all_tags=all_tags, all_languages=all_languages)
+    # return render_template("sentence_snaps/index.html", unmastered_translated_phrases=unmastered_translated_phrases, tag_translated_phrases=tag_translated_phrases, all_tags=all_tags, all_languages=all_languages)
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/delete", methods=["POST"])
 def delete_phrase(id):
