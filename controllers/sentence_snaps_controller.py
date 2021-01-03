@@ -81,7 +81,7 @@ def create_phrase():
     language_input = request.form['language_choice']
     first_language_input = request.form['first_language_input']
     difficulty = request.form['difficulty_choice']
-    translated_input = request.form['translated_input']
+    translated_input = request.form['translated_input'].strip()
     language = language_repository.select_title(language_input)
     first_language_phrase = FirstLanguagePhrase(first_language_input, difficulty)
     first_language_phrase_repository.save(first_language_phrase)
