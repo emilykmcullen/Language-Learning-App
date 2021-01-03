@@ -92,7 +92,7 @@ def create_phrase():
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/results", methods=["POST"])
 def results(id):
     translated_phrase = translated_phrase_repository.select(id)
-    answer = request.form['answer']
+    answer = request.form['answer'].strip()
     remove_punctuation_answer = answer.translate(str.maketrans('','', string.punctuation))
     clean_answer = remove_punctuation_answer.lower()
     remove_punctuation_translated_phrase = translated_phrase.phrase.translate(str.maketrans('','',string.punctuation))
