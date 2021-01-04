@@ -76,7 +76,7 @@ def select_by_language(id):
 
 def list_all_ids():
     ids = []
-    sql = "SELECT * FROM information_schema.table_constraints WHERE constraint_type = 'Primary Key' and Table_Name = 'translated_phrases'"
+    sql = "SELECT id FROM translated_phrases"
     results = run_sql(sql)
 
     for row in results:
