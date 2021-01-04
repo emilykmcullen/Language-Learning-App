@@ -74,6 +74,16 @@ def select_by_language(id):
         phrases_by_language.append(phrase)
     return phrases_by_language
 
+def list_all_ids():
+    ids = []
+    sql = "SELECT * FROM information_schema.table_constraints WHERE constraint_type = 'Primary Key' and Table_Name = 'translated_phrases'"
+    results = run_sql(sql)
+
+    for row in results:
+        row_id = row['id']
+        ids.append(row_id)
+    return ids
+
 def delete_all():
     sql = "DELETE FROM translated_phrases"
     run_sql(sql)

@@ -43,10 +43,14 @@ def delete_tag(id):
     
 @base_blueprint.route('/random')
 def play_random():
-    all_translated_phrases = translated_phrase_repository.select_all()
-    number = len(all_translated_phrases)
-    random_number = random.randint(1, number)
-    return redirect(f"/sentence_snaps/{random_number}/play")
+    all_ids = translated_phrase_repository.list_all_ids()
+    number = len(all_ids) -1
+    random_number = random.randint(0, number)
+    random_id = all_ids[random_number]
+    # all_translated_phrases = translated_phrase_repository.select_all()
+    # number = len(all_translated_phrases)
+    # random_number = random.randint(1, number)
+    return redirect(f"/sentence_snaps/{random_id}/play")
 
 
 
