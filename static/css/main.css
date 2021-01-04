@@ -75,6 +75,11 @@ h1 {
   padding: 20px;
 }
 
+.easy {
+  border-style: solid;
+  border-color: rgb(100, 246, 100);
+}
+
 .single_entry:hover {
   opacity: 1;
 }
