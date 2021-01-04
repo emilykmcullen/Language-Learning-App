@@ -86,6 +86,28 @@ h1 {
   border-color: rgb(100, 246, 100);
 }
 
+.single_entry.medium {
+  opacity: 0.7;
+  background-color: #9190e9 ;
+  width: 250px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+  border-style: solid;
+  border-color: rgb(255, 227, 70);
+}
+
+.single_entry.hard {
+  opacity: 0.7;
+  background-color: #9190e9 ;
+  width: 250px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+  border-style: solid;
+  border-color: rgb(238, 67, 52);
+}
+
 .single_entry:hover {
   opacity: 1;
 }
@@ -150,7 +172,7 @@ input[type="text"]:active {
 }
 
 input[type="text"]:focus {
-  background-color: #7b59e4;
+  background-color: white;
   color: black;
   border:none;
   border-bottom: solid 2px black;
