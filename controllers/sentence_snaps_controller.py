@@ -70,7 +70,7 @@ def update_phrase(id):
         new_tag = tag_repository.select_title(request.form['tags'])
         tag_translated_phrase = tagTranslatedPhrase(new_translated_phrase, new_tag)
         tag_translated_phrase_repository.save(tag_translated_phrase)
-    return redirect('/sentence_snaps')
+    return redirect('/')
     
 
 @sentence_snaps_blueprint.route("/sentence_snaps/new")
@@ -78,7 +78,7 @@ def new_phrase():
     languages = language_repository.select_all()
     return render_template("sentence_snaps/new.html", languages=languages)
 
-@sentence_snaps_blueprint.route("/sentence_snaps", methods=["POST"])
+@sentence_snaps_blueprint.route("/", methods=["POST"])
 def create_phrase():
     mastered = False
     language_input = request.form['language_choice']
@@ -90,7 +90,7 @@ def create_phrase():
     first_language_phrase_repository.save(first_language_phrase)
     translated_phrase = TranslatedPhrase(translated_input, language, first_language_phrase, mastered)
     translated_phrase_repository.save(translated_phrase)
-    return redirect('/sentence_snaps')
+    return redirect('/')
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/results", methods=["POST"])
 def results(id):
@@ -116,7 +116,7 @@ def update_mastered(id):
     mastered = True
     new_translated_phrase = TranslatedPhrase(phrase, language, first_language_phrase, mastered, id)
     translated_phrase_repository.update(new_translated_phrase)
-    return redirect('/sentence_snaps')
+    return redirect('/')
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/show_answer")
 def show_answer(id):
@@ -126,7 +126,7 @@ def show_answer(id):
 @sentence_snaps_blueprint.route("/sentence_snaps/filter", methods=["POST"])
 def filter_snaps():
     if request.form['tag_choice'] == 'show_all':
-        return redirect('/sentence_snaps')
+        return redirect('/')
     tags_translated_phrases = tag_translated_phrase_repository.select_all()
     all_languages = language_repository.select_all()
     all_tags = tag_repository.select_all()
@@ -141,7 +141,7 @@ def filter_snaps():
 @sentence_snaps_blueprint.route("/sentence_snaps/filter_by_language", methods=["POST"])
 def filter_by_language():
     if request.form['filter_by_language'] == 'show_all':
-        return redirect('/sentence_snaps')
+        return redirect('/')
     chosen_language_id = request.form['filter_by_language']
     chosen_language = language_repository.select(chosen_language_id)
     all_phrases_in_language = translated_phrase_repository.select_by_language(chosen_language_id)
