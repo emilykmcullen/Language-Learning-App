@@ -41,10 +41,10 @@
 </h3>
     <div class="entries">
         {% for phrase in all_unmastered_phrases_in_language %}
-            <div class="single_entry">
-                <p class="phrase"> '{{phrase.first_language_phrase.phrase}}'</p>
-                <p class="language"> Practise in: {{phrase.language.title}}</p>
-                <p class="difficulty">Difficulty: {{phrase.first_language_phrase.difficulty}}</p>  
+            <div class="single_entry {{phrase.first_language_phrase.difficulty}}">
+                <p class="phrase"> '{{phrase.first_language_phrase.phrase.capitalize()}}'</p>
+                <p class="language"> Practise in: {{phrase.language.title.capitalize()}}</p>
+                <p class="difficulty">Difficulty: {{phrase.first_language_phrase.difficulty.capitalize()}}</p>  
                 <div class="buttons">
                     <a href="/sentence_snaps/{{phrase.id}}/play">Play</a>
                     <a href="/sentence_snaps/{{phrase.id}}/edit">Edit</a>
