@@ -27,7 +27,8 @@ def sentence_snaps():
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/delete", methods=["POST"])
 def delete_phrase(id):
     translated_phrase_repository.delete(id)
-    return redirect("/sentence_snaps")
+    # return redirect("/sentence_snaps")
+    return render_template("index.html")
 
 @sentence_snaps_blueprint.route("/sentence_snaps/<id>/play")
 def play_phrase(id):
