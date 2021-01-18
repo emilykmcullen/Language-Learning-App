@@ -7,14 +7,17 @@
         <div class="play_single_entry">
             <p class="phrase">'{{answer.capitalize()}}'</p>
                  <p><i class="fa fa-check fa-2x" style="color:yellow" aria-hidden="true"></i> </p>
+            
+            <p class="submitbutton">
+                <a href="{{ url_for('sentence_snaps_blueprint.sentence_snaps') }}">Back to Sentence Snaps</a>
+            </p>
+
             <form action="/sentence_snaps/{{translated_phrase.id}}/update_mastered" method="POST">
                 <p class="submitbutton">
                     <input type="submit" value="Put in Mastered Snaps">
                 </p>
             </form>
-            <p class="submitbutton">
-                <a href="{{ url_for('sentence_snaps_blueprint.sentence_snaps') }}">Back to Sentence Snaps</a>
-            </p>
+            
         </div>
         {% else %}
         <div class="play_single_entry">
