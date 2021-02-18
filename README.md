@@ -10,12 +10,12 @@ never return to this notebook to actually practise them! With Lingua Snaps I aim
 by making an app that allows the user to actively practise their phrases they have stored.<h5>
 
 <h2> Main Features<h2>
-<h5>
-1. The user can create and store phrases in their target language and mother tongue language
-1. The user can edit and delete phrases
-1. The user can also create new tags and add languages to the system
-1. The user can practise their phrases and get feedback on whether they were correct or not
-1. The user can filter phrases by tags or language 
+
+* The user can create and store phrases in their target language and mother tongue language
+* The user can edit and delete phrases
+* The user can also create new tags and add languages to the system
+* The user can practise their phrases and get feedback on whether they were correct or not
+* The user can filter phrases by tags or language 
 
 
 TO RUN THE APP:
