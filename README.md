@@ -1,21 +1,21 @@
 <h1> Lingua Snaps <h1>
 
 <h2>Deployed App<h2>
-[Lingua Snaps](https://lingua-snaps.herokuapp.com/)
+<h5>[Lingua Snaps](https://lingua-snaps.herokuapp.com/)<h5>
 
 <h2>Overview<h2>
 
-<h6> When learning a language I always use a notebook to store new phrases and vocabularly, however I 
+<h5> When learning a language I always use a notebook to store new phrases and vocabularly, however I 
 never return to this notebook to actually practise them! With Lingua Snaps I aimed to solve this issue
-by making an app that allows the user to actively practise their phrases they have stored.<h6>
+by making an app that allows the user to actively practise their phrases they have stored.<h5>
 
 <h2> Main Features<h2>
-<h6>
-* The user can create and store phrases in their target language and mother tongue language
-* The user can edit and delete phrases
-* The user can also create new tags and add languages to the system
-* The user can practise their phrases and get feedback on whether they were correct or not
-* The user can filter phrases by tags or language <h6>
+<h5>
+1. The user can create and store phrases in their target language and mother tongue language
+1. The user can edit and delete phrases
+1. The user can also create new tags and add languages to the system
+1. The user can practise their phrases and get feedback on whether they were correct or not
+1. The user can filter phrases by tags or language <h5>
 
 
 TO RUN THE APP:
