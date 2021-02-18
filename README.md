@@ -1,7 +1,7 @@
 <h1> Lingua Snaps <h1>
 
 <h2>Deployed App<h2>
-<h5>[I'm an inline-style link](https://www.google.com)<h5>
+<h5>Lingua Snaps: <a href="https://lingua-snaps.herokuapp.com/">App<a><h5>
 
 <h2>Overview<h2>
 
@@ -9,7 +9,7 @@
 never return to this notebook to actually practise them! With Lingua Snaps I aimed to solve this issue
 by making an app that allows the user to actively practise their phrases they have stored.<h5>
 
-Main Features:
+Main Features
 
 * The user can create and store phrases in their target language and mother tongue language
 * The user can edit and delete phrases
