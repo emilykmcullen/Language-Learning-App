@@ -5,16 +5,17 @@
 
 <h2>Overview<h2>
 
-When learning a language I always use a notebook to store new phrases and vocabularly, however I 
+<p> When learning a language I always use a notebook to store new phrases and vocabularly, however I 
 never return to this notebook to actually practise them! With Lingua Snaps I aimed to solve this issue
-by making an app that allows the user to actively practise their phrases they have stored.
+by making an app that allows the user to actively practise their phrases they have stored.<p>
 
 <h2> Main Features<h2>
+<p>
 * The user can create and store phrases in their target language and mother tongue language
 * The user can edit and delete phrases
 * The user can also create new tags and add languages to the system
 * The user can practise their phrases and get feedback on whether they were correct or not
-* The user can filter phrases by tags or language
+* The user can filter phrases by tags or language <p>
 
 
 TO RUN THE APP:
