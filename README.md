@@ -9,7 +9,7 @@
 never return to this notebook to actually practise them! With Lingua Snaps I aimed to solve this issue
 by making an app that allows the user to actively practise their phrases they have stored.<h5>
 
-<h2> Main Features<h2>
+Main Features:
 
 * The user can create and store phrases in their target language and mother tongue language
 * The user can edit and delete phrases
