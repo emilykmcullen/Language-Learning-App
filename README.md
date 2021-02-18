@@ -1,19 +1,21 @@
-Language practice app
+<h1> Lingua Snaps <h1>
 
-MVP:
--The app should allow the user to practise sentences and words in their target language
--The user should be able to add sentences in English, choose their target language from a drop-down list, write their target language sentence and choose the difficulty level from a drop-down list
--The user should be able to edit and delete sentences
--Once created the user should be able to see only the English version of their sentence/ word
--When they click on the sentence/ word they should be able to input their target language translation
--They should receive feedback on whether they were correct or incorrect
--The user should be able to ‘show’ the answer if they are unable to get it correct
+<h2>Deployed App<h2>
+[Lingua Snaps](https://lingua-snaps.herokuapp.com/)
 
-POSSIBLE EXTENSIONS:
--The user could be able to sort the sentences by ‘tags’
--The user could be able to move sentences/words from an ‘in practice’ section to a ‘mastered’ 
-  section once they are confident with the sentence and don’t want to practice it anymore
--The user could be able to generate a random one of their sentences to practise rather than selecting it themselves
+<h2>Overview<h2>
+
+When learning a language I always use a notebook to store new phrases and vocabularly, however I 
+never return to this notebook to actually practise them! With Lingua Snaps I aimed to solve this issue
+by making an app that allows the user to actively practise their phrases they have stored.
+
+<h2> Main Features<h2>
+* The user can create and store phrases in their target language and mother tongue language
+* The user can edit and delete phrases
+* The user can also create new tags and add languages to the system
+* The user can practise their phrases and get feedback on whether they were correct or not
+* The user can filter phrases by tags or language
+
 
 TO RUN THE APP:
 
