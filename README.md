@@ -1,7 +1,7 @@
 <h1> Lingua Snaps <h1>
 
 <h2>Deployed App<h2>
-<h5>Lingua Snaps: <a href="https://lingua-snaps.herokuapp.com/">App<a><h5>
+<h4><a href="https://lingua-snaps.herokuapp.com/">Lingua Snaps<a><h4>
 
 <h2>Overview<h2>
 
@@ -17,10 +17,3 @@ Main Features
 * The user can practise their phrases and get feedback on whether they were correct or not
 * The user can filter phrases by tags or language 
 
-
-TO RUN THE APP:
-
-1. psql -d lingua_snaps -f db/lingua_snaps.sql
-2. python3 console.py (this will populate the db with the info in console.py, you can then enter q to quit)
-3. python3 -m flask run (now you can go to localhost:5000)
-4. if you want to check the db use psql -d lingua_snaps
