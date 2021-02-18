@@ -15,7 +15,7 @@ by making an app that allows the user to actively practise their phrases they ha
 1. The user can edit and delete phrases
 1. The user can also create new tags and add languages to the system
 1. The user can practise their phrases and get feedback on whether they were correct or not
-1. The user can filter phrases by tags or language <h5>
+1. The user can filter phrases by tags or language 
 
 
 TO RUN THE APP:
