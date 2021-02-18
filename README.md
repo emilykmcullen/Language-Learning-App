@@ -1,13 +1,13 @@
 <h1> Lingua Snaps <h1>
 
 <h2>Deployed App<h2>
-<h5>[Lingua Snaps](https://lingua-snaps.herokuapp.com/)<h5>
+[Lingua Snaps](https://lingua-snaps.herokuapp.com/ "Lingua snaps")
 
 <h2>Overview<h2>
 
-<h5> When learning a language I always use a notebook to store new phrases and vocabularly, however I 
+<h4> When learning a language I always use a notebook to store new phrases and vocabulary, however I 
 never return to this notebook to actually practise them! With Lingua Snaps I aimed to solve this issue
-by making an app that allows the user to actively practise their phrases they have stored.<h5>
+by making an app that allows the user to actively practise their phrases they have stored.<h4>
 
 Main Features:
 
