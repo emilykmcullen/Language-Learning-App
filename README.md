@@ -1,19 +1,40 @@
-<h1> Lingua Snaps <h1>
+# Lingua Snaps
+### Flashcard-style language practice app for language learners
 
-<h2>Deployed App<h2>
-<h4><a href="https://lingua-snaps.herokuapp.com/">Lingua Snaps<a><h4>
 
-<h2>Overview<h2>
+Link to deployed app: [Lingua Snaps](https://lingua-snaps.herokuapp.com/).
 
-<h5> When learning a language I always use a notebook to store new phrases and vocabularly, however I 
-never return to this notebook to actually practise them! With Lingua Snaps I aimed to solve this issue
-by making an app that allows the user to actively practise their phrases they have stored.<h5>
+Main features: 
+ 
+* The user can create and store phrases in their target language and mother-tongue language
+* Ability to edit and delete phrases
+* Create tags and add tags to phrases 
+* Ability to add languages to the system
+* The user can practice phrases and get feedback on whether they were correct or not
+* Phrases can be filtered by tag or language
 
-Main Features
 
-* The user can create and store phrases in their target language and mother tongue language
-* The user can edit and delete phrases
-* The user can also create new tags and add languages to the system
-* The user can practise their phrases and get feedback on whether they were correct or not
-* The user can filter phrases by tags or language 
 
+# Languages & Technologies 
+
+1. Python
+2. Flask
+3. PostgreSQL
+4. HTML
+5. CSS
+
+
+# Screenshots
+
+### Landing Page. 
+![Landing Page](./readme_images/Landing.png)
+### Practice A Phrase.
+![Play Page](./readme_images/Play.png)
+### Feedback for Incorrect Answer.
+![Incorrect Page](./readme_images/Incorrect.png)
+### Feedback for Correct Answer.
+![Correct Page](./readme_images/Correct.png)
+### Add New Phrase.
+![New Phrase Page](./readme_images/NewPhrase.png)
+### Edit Phrase.
+![Edit Page](./readme_images/Edit.png)
