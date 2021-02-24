@@ -1,4 +1,4 @@
-# Lingua Snaps
+# :apple: Lingua Snaps
 ### Flashcard-style language practice app for language learners
 
 
@@ -15,7 +15,7 @@ Main features:
 
 
 
-# Languages & Technologies 
+# :apple: Languages & Technologies 
 
 1. Python
 2. Flask
@@ -24,7 +24,7 @@ Main features:
 5. CSS
 
 
-# Screenshots
+# :apple: Screenshots
 
 ### Landing Page. 
 ![Landing Page](./readme_images/Landing.png)
